@@ -1,0 +1,50 @@
+extends ../layouts/layout
+block contents
+  .row
+    .col-lg-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Product
+          button.btn.btn-inverse-success.btn-icon(type='button')
+            i.mdi.mdi-plus     
+          .table-responsive
+            table.table.table-hover
+              thead
+                tr
+                  th Tên sản phẩm
+                  |                             
+                  th Loại
+                  |                             
+                  th Giá
+                  |                             
+                  th Tình trạng
+                  |                             
+                  th
+                  |                             
+                  th
+              |                         
+              tbody
+                each product in products
+                  tr
+                    td= product.name
+                    |                             
+                    td= product.type
+                    |                             
+                    td= product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                    |                             
+                    td
+                      if (product.count >= 10)
+                        label.badge.badge-success Còn Hàng
+                      if (product.count === 0)
+                        label.badge.badge-danger Hết hàng
+                      if (product.count > 0 && product.count < 10)
+                        label.badge.badge-warning Sắp hết
+                    |                             
+                    td
+                      button.btn.btn-inverse-primary.btn-icon(type='button')
+                        i.mdi.mdi-pencil
+                    |                             
+                    td
+                      button.btn.btn-inverse-danger.btn-icon(type='button')
+                        i.mdi.mdi-delete
+      
