@@ -1,0 +1,34 @@
+extends ../layouts/layout
+block contents
+    .col-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Edit profile
+          form.forms-sample(method="POST", action="/admin/users/edit/" + account._id)
+            .form-group
+              label(for='exampleInputName1') Full Name
+              |             
+              input#exampleInputName1.form-control(type='text', placeholder='Full Name' value=account.name name="fullName")
+            |           
+            .form-group
+              label(for='exampleInputEmail2') Email address
+              |             
+              input#exampleInputEmail2.form-control(type='email', placeholder='Email' value=account.email name="email")
+            |            
+            .form-group
+              label(for='exampleInputEmail3') Phone Number
+              |             
+              input#exampleInputEmail3.form-control(type='tel', placeholder='Phone Number' value=account.phone name="tel")
+            |            
+            .form-group
+              label(for='exampleInputEmail4') Country
+              |             
+              input#exampleInputEmail4.form-control(type='text', placeholder='Country' value=account.country name="country")
+            |            
+            .form-group
+              label(for='exampleInputEmail5') Date of Birth
+              |             
+              input#exampleInputEmail5.form-control(type='text', placeholder='dd/mm/yyyy' value=account.date_of_birth name="dateofbirth")
+            button(type="submit" class="btn btn-primary mr-2") Submit
+            button(class="btn btn-light") Cancel          
+            

@@ -35,12 +35,17 @@ module.exports.postLogin = async function(req, res) {
     res.cookie('userID', user.id, {
         signed: true
     });
-    res.redirect('/home');
+
+    if (user.role === "admin"){
+        res.redirect('/admin');
+    }else{
+        res.redirect('/home');
+    }
 }
 
 module.exports.logout = function(req, res) {
     res.clearCookie("userID");
-    res.redirect('back');
+    res.redirect('/home');
 }
 
 module.exports.postSignUp = async function(req, res) {
