@@ -1,0 +1,92 @@
+extends ../layouts/layout
+block contents
+  .content-wrapper
+    .row
+      .col-lg-12.grid-margin.stretch-card
+        .card
+          .card-body
+            h4.card-title Flight
+            |
+            button.btn.btn-inverse-success.btn-icon.m-2(type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo")
+              i.mdi.mdi-plus
+            #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    h5#exampleModalLabel.modal-title New Flight
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                      span(aria-hidden='true') &times;
+                  .modal-body
+                    form(method="POST", action="/schedule/create")
+                      .form-group
+                        label.col-form-label(for='takeoff') Sân bay đi:
+                        select.form-control#takeoff(type='text' name="from_airport_id")
+                          each airport in airports  
+                            option(value=airport.code)= airport.name 
+                      .form-group
+                        label.col-form-label(for='arrival') Sân bay đến:
+                        select.form-control(type='text' name='to_airport_id')
+                          each airport in airports  
+                            option(value=airport.code)= airport.name 
+                      .form-group
+                        label.col-form-label(for='timeStart') Giờ xuất phát:
+                        input#tel.form-control(type='datetime-local' name="depart_time")
+                      .form-group
+                        label.col-form-label(for='timeArrived') Giờ Đến:
+                        input#country.form-control(type='datetime-local' name="arrival")
+                      .form-group
+                        label.col-form-label(for='planeCode') Mã máy bay:
+                        select.form-control(type='text' name="airbus_id")
+                          each airbus in airbuses  
+                            option(value=airbus._id)= airbus.name 
+                      .form-group
+                        label.col-form-label(for='planeCode') Số lượng vé:
+                        input#email.form-control(type='number' name="ticket_ammount")
+                      .modal-footer
+                        button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                        button.btn.btn-primary(type='submit') Create
+            .table-responsive
+              table.table.table-striped
+                thead
+                  tr
+                    th
+                      | Sân bay đến
+                    |
+                    th
+                      | Sân bay đi
+                    |
+                    th
+                      | Giờ xuất phát
+                    |
+                    th
+                      | Giờ đến
+                    |
+                    th
+                      | Mã máy bay
+                    th
+                      | Số vé
+                    |
+                    th
+                      | Trạng thái
+                    |
+                tbody
+                  each schedule in schedules
+                    - var timeStart = new Date(schedule.depart_time)
+                    - var timeArrived = new Date(schedule.arrival)
+                    tr
+                      //- td.py-1
+                      //-   img(src='/assets/admin/images/faces/face1.jpg' alt='image')
+                      //- |
+                      td= schedule.from_airport_id
+                      td= schedule.to_airport_id
+                        //- .progress
+                        //-   .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
+                      td= timeStart.getFullYear() + '-' + (('0' + (timeStart.getMonth()+1)).slice(-2)) + '-' + timeStart.getDate() + ' ' + (('0' + timeStart.getHours()).slice(-2)) + ':' + (('0' + timeStart.getMinutes()).slice(-2))
+                      td= timeArrived.getFullYear() + '-' + (('0' + (timeArrived.getMonth()+1)).slice(-2)) + '-' + timeArrived.getDate() + ' ' + (('0' + timeArrived.getHours()).slice(-2)) + ':' + (('0' + timeArrived.getMinutes()).slice(-2))
+                      td= schedule.airbus
+                      td= schedule.ticket_ammount
+                      td= schedule.status
+                      td
+                        a(href="/schedule/edit/" + schedule._id)
+                          button.btn.btn-inverse-primary.btn-icon.m-2(type='button')
+                            i.mdi.mdi-pencil

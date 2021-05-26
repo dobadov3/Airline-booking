@@ -1,0 +1,32 @@
+extends ../layouts/layout
+block contents
+    .col-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Edit Airbus
+          form.forms-sample(method="POST", action="/airbus/edit/" + airbus._id)
+            .form-group
+              label(for='exampleInputName1') Tên máy bay
+              |             
+              input#exampleInputName1.form-control(type='text', placeholder='Tên máy bay' value=airbus.name name="name")
+            |           
+            .form-group
+              label(for='exampleInputEmail2') Mã máy bay
+              |             
+              input#exampleInputEmail2.form-control(type='text', placeholder='Mã máy bay' value=airbus.code name="code")
+            .form-group
+              label(for='exampleInputName1') Sân bay đến
+              |
+              select#exampleInputName1.form-control(name="carrier_id")
+                each carrier in carriers
+                  if (carrier._id.equals(airbus.carrier_id)) 
+                    option(value=carrier._id selected)= carrier.name
+                  else
+                    option(value=carrier._id)= carrier.name
+            .form-group
+              label(for='seatNum') Số chỗ ngồi
+              |             
+              input#seatNum.form-control(type='number', placeholder='Mã máy bay' value=airbus.seatNum name="seatNum")
+            button(type="submit" class="btn btn-primary mr-2") Submit
+            button(class="btn btn-light") Cancel          
+            

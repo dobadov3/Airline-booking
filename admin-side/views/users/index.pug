@@ -1,0 +1,92 @@
+extends ../layouts/layout
+block contents
+  .content-wrapper
+    .row
+      .col-lg-12.grid-margin.stretch-card
+        .card
+          .card-body
+            h4.card-title Users
+            |
+            button.btn.btn-inverse-success.btn-icon.m-2(type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo")
+              i.mdi.mdi-plus       
+            #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-header
+                    h5#exampleModalLabel.modal-title New User
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                      span(aria-hidden='true') &times;
+                  .modal-body
+                    form(method="POST", action="/users/create")
+                      .form-group
+                        label.col-form-label(for='username') Username:
+                        input#username.form-control(type='text' name='username')
+                      .form-group
+                        label.col-form-label(for='full-name') Full Name:
+                        input#full-name.form-control(type='text' name='name')
+                      .form-group
+                        label.col-form-label(for='email') Email:
+                        input#email.form-control(type='email' name="email")
+                      .form-group
+                        label.col-form-label(for='tel') Phone Number:
+                        input#tel.form-control(type='text' name="phone")
+                      .form-group
+                        label.col-form-label(for='country') Country:
+                        input#country.form-control(type='text' name="country")
+                      .form-group
+                        label.col-form-label(for='date') Date of Birth:
+                        input#date.form-control(type='date' name="date_of_birth")
+                      .modal-footer
+                        button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                        button.btn.btn-primary(type='submit') Create                     
+            .table-responsive
+              table.table.table-striped
+                thead
+                  tr                                                  
+                    th
+                      | Username
+                    |                                                     
+                    th
+                      | Full name
+                    |                                                     
+                    th
+                      | Email
+                    |                                                     
+                    th
+                      | Phone
+                    |                                                     
+                    th
+                      | Country
+                    th Date Of Birth                                            
+                    th                                              
+                tbody
+                  each customer in customers
+                    tr                                                     
+                      td= customer.username                                                    
+                      td= customer.name                                                    
+                      td= customer.email
+                        //- .progress
+                        //-   .progress-bar.bg-success(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')                                                  
+                      td= customer.phone                                                     
+                      td= customer.country                                                     
+                      td= customer.date_of_birth
+                      td
+                        a(href="/users/edit/" + customer._id)
+                          button.btn.btn-inverse-primary.btn-icon.m-2(type='button')
+                            i.mdi.mdi-pencil
+                        button.btn.btn-inverse-danger.btn-icon.m-2(type='button' data-toggle="modal" data-target="#btn-confirm" + customer.username)
+                          i.mdi.mdi-delete
+                        .modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true' id="btn-confirm" + customer.username)
+                          .modal-dialog.modal-dialog-centered(role='document')
+                            .modal-content
+                              .modal-header
+                                h5#exampleModalLabel.modal-title Warrning
+                                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                  span(aria-hidden='true') &times;
+                              .modal-body
+                                | Bạn có thật sự muốn xóa không?
+                              .modal-footer
+                                button.btn.btn-secondary(type='button', data-dismiss='modal') Không
+                                a(href="/users/delete/" + customer._id) 
+                                  button.btn.btn-primary(type='button') Xóa
+  
