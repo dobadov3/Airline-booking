@@ -37,7 +37,7 @@ module.exports.postLogin = async function(req, res) {
     });
 
     if (user.role === "admin"){
-        res.redirect('/admin');
+        res.redirect('/admin/users');
     }else{
         res.redirect('/home');
     }
@@ -83,6 +83,10 @@ module.exports.postSignUp = async function(req, res) {
     newUser.name = name;
     newUser.password = md5(password);
     newUser.phone = phone;
+    newUser.role = "customer";
+    newUser.country = "";
+    newUser.date_of_birth = "";
+    
 
     Account.create(newUser);
 

@@ -1,0 +1,19 @@
+extends ../layouts/layout
+block contents
+    .col-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Edit Airport
+          form.forms-sample(method="POST", action="/admin/airports/edit/" + airport._id)
+            .form-group
+              label(for='exampleInputName1') Tên sân bay
+              |
+              input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' value=airport.name name="name")
+            |
+            .form-group
+              label(for='exampleInputEmail2') Mã sân bay
+              |
+              input#exampleInputEmail2.form-control(type='text', placeholder='Mã sân bay' value=airport.code name="code")
+            |
+            button(type="submit" class="btn btn-primary mr-2") Submit
+            button(class="btn btn-light" href="/admin/airports/") Cancel
