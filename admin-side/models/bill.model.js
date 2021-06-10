@@ -1,11 +1,14 @@
 var mongoose = require("mongoose");
 
-var billInfoSchema = new mongoose.Schema({
+var billSchema = new mongoose.Schema({
     customer_id: String,
-    datetime: Date,
-    total_payment: Number,
+    date: {
+        type: Date,
+        default: new Date()
+    },
+    total_payment: Number
 });
 
-var BillInfo = mongoose.model("BillInfo", billInfoSchema, "bill_info");
+var Bill = mongoose.model("Bill", billSchema, "bill");
 
-module.exports = BillInfo;
+module.exports = Bill;

@@ -1,26 +1,34 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
-const port = 3000;
-const mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-const route = require('./routes/index.route');
-const authMiddleware = require('./middlewares/auth.middleware');;
+const port = 3001;
+const bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+const router = require("./routes/index.route");
 
-app.use(cookieParser('13jng'))
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-mongoose.connect('mongodb://localhost/airline-booking', { useNewUrlParser: true, useUnifiedTopology: true });
-
-app.set("views", "./views");
-app.set('view engine', 'pug')
-
+app.use(cookieParser('mySecret'));
+// app.use(function (req, res) {
+//     res.setHeader("Content-Type", "text/plain");
+//     res.write("you posted:\n");
+//     res.end(JSON.stringify(req.body, null, 2));
+// });
 app.use(express.static("public"));
+app.set("views", "./views");
+app.set("view engine", "pug");
 
-app.use(authMiddleware);
+router(app);
 
-route(app);
-
-app.listen(port);
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+});

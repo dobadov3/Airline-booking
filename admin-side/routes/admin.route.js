@@ -1,27 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var adminController = require('../controllers/admin.controller');
+const express = require("express");
+const router = express.Router();
+const controller = require("../controllers/admin.controller");
 
-router.get('/', adminController.get);
-router.get('/users', adminController.getUser);
-router.get('/users/delete/:userID', adminController.deleteUser);
-router.get('/users/edit/:userID', adminController.getEditUser);
-router.get('/flights', adminController.getFlight);
-router.get('/flights/edit/:flightId', adminController.getEditFlight);
-router.get('/airports', adminController.getAirport);
-router.get('/airports/edit/:airportId', adminController.getEditAirport);
-router.get('/airports/delete/:airportId', adminController.deleteAirport);
-router.get('/plane', adminController.getPlane)
-router.get('/plane/edit/:planeID', adminController.getEditPlane);
-router.get('/plane/delete/:planeID', adminController.deletePlane);
+const authenticationMiddleware = require("../middlewares/authentication.middleware");
 
-router.post('/users/create', adminController.create);
-router.post('/users/edit/:userID', adminController.editUser)
-router.post('/flights/edit/:flightId', adminController.editFlight);
-router.post('/flights/create', adminController.createFlight);
-router.post('/airports/create', adminController.createAirport);
-router.post('/airports/edit/:airportId', adminController.editAirport);
-router.post('/plane/create', adminController.postCreatePlane);
-router.post('/plane/edit/:planeID', adminController.postEditPlane);
+router.get("/",authenticationMiddleware, controller.get);
+router.get("/delete/:adminID",authenticationMiddleware, controller.delete);
+router.get("/edit/:adminID",authenticationMiddleware, controller.getEdit);
+
+router.post("/create",authenticationMiddleware, controller.postCreate);
+router.post("/edit/:adminID",authenticationMiddleware, controller.postEdit);
 
 module.exports = router;

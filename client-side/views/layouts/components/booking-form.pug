@@ -1,0 +1,73 @@
+html
+  head
+  body
+    .slide-form-section.hp2
+      .uk-container
+        .impx-negative-top.uk-margin-medium-bottom.slide-form(data-uk-grid='')
+          .uk-flex.uk-flex-center(data-uk-grid='')
+            .uk-width-1-1
+              .impx-hp-booking-form.hp2
+                h6.uk-heading-line.uk-text-center.impx-text-white.uk-margin-bottom.uk-text-uppercase
+                  span Booking Form
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                form.uk-grid-margin-small(class='uk-child-width-1-6@xl uk-child-width-1-6@l uk-child-width-1-6@m uk-child-width-1-3@s', data-uk-grid='')
+                  .uk-form-controls
+                    .uk-inline
+                      label.uk-form-label Email
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    &#x9;
+                      span.uk-form-icon(data-uk-icon='icon: mail')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;        
+                      input.uk-input.booking-email.uk-border-rounded(type='text', placeholder='your e-mail')
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    
+                  .uk-form-controls
+                    .uk-inline
+                      label.uk-form-label Arrival
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    &#x9;
+                      span.uk-form-icon(data-uk-icon='icon: calendar')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;        
+                      input.uk-input.booking-arrival.uk-border-rounded(type='text', placeholder='m/dd/yyyy')
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    
+                  .uk-form-controls
+                    .uk-inline
+                      label.uk-form-label Departure
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    &#x9;
+                      span.uk-form-icon(data-uk-icon='icon: calendar')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;        
+                      input.uk-input.booking-departure.uk-border-rounded(type='text', placeholder='m/dd/yyyy')
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    
+                  .uk-form-controls.uk-position-relative
+                    label.uk-form-label(for='form-guest-select') Guest
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    &#x9;
+                    span.uk-form-icon.select-icon(data-uk-icon='icon: users')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;            
+                    select#form-guest-select.uk-select.uk-border-rounded
+                      option(value='') Please select...
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;                
+                      option(value='1') 1
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      option(value='2') 2
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      option(value='3') 3
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      option(value='4') 4
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   
+                  .uk-form-controls.uk-position-relative
+                    label.uk-form-label(for='form-rooms-select') Rooms
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    &#x9;
+                    span.uk-form-icon.select-icon(data-uk-icon='icon: album')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;            
+                    select#form-rooms-select.uk-select.uk-border-rounded
+                      option(value='') Please select...
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;                
+                      option(value='room_1') Single
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      option(value='room_2') Double
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      option(value='room_3') Primier
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      option(value='room_4') Deluxe
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;    
+                  div
+                    label.uk-form-label.empty-label &nbsp;
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;        
+                    button.uk-button.uk-width-1-1 Book Now!

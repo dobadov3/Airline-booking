@@ -1,53 +1,49 @@
-const Airport = require('../models/airport.model');
+const Airport = require("../models/airport.model");
+const _ = require("lodash");
 
-module.exports.getAirport = async function (req, res) {
+module.exports.get = async function (req, res) {
     var airports = await Airport.find();
 
-    res.render("./airports/index", {
-        airports
+    res.render("./airport/index", {
+        airports,
     });
 };
 
 module.exports.postCreate = async function (req, res) {
-    var airport = new Airport(req.body);
-
-    Airport.create(airport);
+    Airport.create(req.body, (err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+    });
 
     res.redirect("back");
 };
 
 module.exports.getEdit = async function (req, res) {
-    var airportId = req.params.airportId;
-    var airport = await Airport.findById(airportId);
-    res.render("./airports/edit", {
+    var airport = await Airport.findById(req.params.airportID);
+
+    res.render("./airport/edit", {
         airport,
     });
 };
 
 module.exports.postEdit = async function (req, res) {
-    var airportId = req.params.airportId;
-
-    var airport = await Airport.findById(airportId);
-
-    airport.name = req.body.name;
-    airport.code = req.body.code;
-    airport.country = req.body.country;
-    airport.city = req.body.city;
-
-    airport.markModified("name");
-    airport.markModified("code");
-    airport.markModified("city");
-    airport.markModified("country");
-
-    await airport.save();
-
-    res.redirect("/airports");  
+    var airport = await Airport.findById(req.params.airportID);
+    _.extend(airport, req.body);
+    airport.save((err, docs) => {
+        if (err) {
+            console.log(err);
+        }
+    });
+    res.redirect("/airports");
 };
 
 module.exports.delete = async function (req, res) {
-    var airportId = req.params.airportId;
-
-    await Airport.findOneAndRemove({ _id: airportId });
+    Airport.findByIdAndDelete(req.params.airportID, (err) => {
+        if (err) {
+            console.log(err);
+        }
+    });
 
     res.redirect("back");
 };

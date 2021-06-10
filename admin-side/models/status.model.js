@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var statusSchema = new mongoose.Schema({
-    status_name: String, 
+    name: String,
     description: String
 });
 

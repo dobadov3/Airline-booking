@@ -1,3 +1,3 @@
-module.exports.get = function (req, res) {
-    res.render("./layouts/layout");
-};
+module.exports.get = function(req, res){
+    res.render('./layouts/layout')
+}

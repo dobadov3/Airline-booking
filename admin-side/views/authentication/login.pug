@@ -8,16 +8,16 @@ html(lang='en')
     |   
     title Majestic Admin
     // plugins:css
-    link(rel='stylesheet', href='../../vendors/mdi/css/materialdesignicons.min.css')
+    link(rel='stylesheet', href='/vendors/mdi/css/materialdesignicons.min.css')
     |   
-    link(rel='stylesheet', href='../../vendors/base/vendor.bundle.base.css')
+    link(rel='stylesheet', href='/vendors/base/vendor.bundle.base.css')
     // endinject
     // plugin css for this page
     // End plugin css for this page
     // inject:css
-    link(rel='stylesheet', href='../../css/style.css')
+    link(rel='stylesheet', href='/css/style.css')
     // endinject
-    link(rel='shortcut icon', href='../../images/favicon.png')
+    link(rel='shortcut icon', href='/images/favicon.png')
   body
     .container-scroller
       .container-fluid.page-body-wrapper.full-page-wrapper
@@ -26,13 +26,13 @@ html(lang='en')
             .col-lg-6.d-flex.align-items-center.justify-content-center
               .auth-form-transparent.text-left.p-3
                 .brand-logo
-                  img(src='../../images/logo.svg', alt='logo')
+                  img(src='/images/logo.svg', alt='logo')
                 |               
                 h4 Welcome back!
                 |               
                 h6.font-weight-light Happy to see you again!
                 |               
-                form.pt-3(method="POST" action="/authentication")
+                form.pt-3(method="POST" action="/authentication/login")
                   .form-group
                     label(for='exampleInputEmail') Username
                     |                   
@@ -41,7 +41,7 @@ html(lang='en')
                         span.input-group-text.bg-transparent.border-right-0
                           i.mdi.mdi-account-outline.text-primary
                       |                     
-                      input#exampleInputEmail.form-control.form-control-lg.border-left-0(type='text', placeholder='Username')
+                      input#exampleInputEmail.form-control.form-control-lg.border-left-0(type='text', placeholder='Username' name="username")
                   |                 
                   .form-group
                     label(for='exampleInputPassword') Password
@@ -51,17 +51,19 @@ html(lang='en')
                         span.input-group-text.bg-transparent.border-right-0
                           i.mdi.mdi-lock-outline.text-primary
                       |                     
-                      input#exampleInputPassword.form-control.form-control-lg.border-left-0(type='password', placeholder='Password')
+                      input#exampleInputPassword.form-control.form-control-lg.border-left-0(type='password', placeholder='Password' name="password")
+                  if (error)
+                    p.text-danger= error
                   .my-3
                     button.btn.btn-block.btn-primary.btn-lg.font-weight-medium.auth-form-btn(type="submit") LOGIN
             |           
             .col-lg-6.login-half-bg.d-flex.flex-row
-    script(src='../../vendors/base/vendor.bundle.base.js')
+    script(src='/vendors/base/vendor.bundle.base.js')
     // endinject
     // inject:js
-    script(src='../../js/off-canvas.js')
+    script(src='/js/off-canvas.js')
     |   
-    script(src='../../js/hoverable-collapse.js')
+    script(src='/js/hoverable-collapse.js')
     |   
-    script(src='../../js/template.js')
+    script(src='/js/template.js')
     // endinject

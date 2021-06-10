@@ -1,12 +1,9 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 var airportSchema = new mongoose.Schema({
-    name: String,
-    code: String,
-    city: String,
-    country: String
+    name: String
 });
 
-var Airport = mongoose.model('Airport', airportSchema, 'airport');
+var Airport = mongoose.model("Airport", airportSchema, "airport");
 
 module.exports = Airport;

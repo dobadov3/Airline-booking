@@ -8,16 +8,16 @@ html(lang='en')
     |   
     title Majestic Admin
     // plugins:css
-    link(rel='stylesheet', href='../../vendors/mdi/css/materialdesignicons.min.css')
+    link(rel='stylesheet', href='/assets/admin/vendors/mdi/css/materialdesignicons.min.css')
     |   
-    link(rel='stylesheet', href='../../vendors/base/vendor.bundle.base.css')
+    link(rel='stylesheet', href='/assets/admin/vendors/base/vendor.bundle.base.css')
     // endinject
     // plugin css for this page
     // End plugin css for this page
     // inject:css
-    link(rel='stylesheet', href='../../css/style.css')
+    link(rel='stylesheet', href='/assets/admin/css/style.css')
     // endinject
-    link(rel='shortcut icon', href='../../images/favicon.png')
+    link(rel='shortcut icon', href='/assets/admin/images/favicon.png')
   body
     .container-scroller
       .container-fluid.page-body-wrapper.full-page-wrapper
@@ -26,7 +26,7 @@ html(lang='en')
             .col-lg-6.d-flex.align-items-center.justify-content-center
               .auth-form-transparent.text-left.p-3
                 .brand-logo
-                  img(src='../../images/logo.svg', alt='logo')
+                  img(src='/assets/admin/images/logo.svg', alt='logo')
                 |               
                 h4 New here?
                 |               
@@ -54,21 +54,14 @@ html(lang='en')
                       input.form-control.form-control-lg.border-left-0(type='email', placeholder='Email')
                   |                 
                   .form-group
-                    label Country
+                    label Phone
                     |                   
-                    select#exampleFormControlSelect2.form-control.form-control-lg
-                      option Country
+                    .input-group
+                      .input-group-prepend.bg-transparent
+                        span.input-group-text.bg-transparent.border-right-0
+                          i.mdi.mdi-cellphone-android.text-primary
                       |                     
-                      option United States of America
-                      |                     
-                      option United Kingdom
-                      |                     
-                      option India
-                      |                     
-                      option Germany
-                      |                     
-                      option Argentina
-                  |                 
+                      input.form-control.form-control-lg.border-left-0(type='tel', placeholder='Phone' name="phone")              
                   .form-group
                     label Password
                     |                   
@@ -79,12 +72,6 @@ html(lang='en')
                       |                     
                       input#exampleInputPassword.form-control.form-control-lg.border-left-0(type='password', placeholder='Password')
                   |                 
-                  .mb-4
-                    .form-check
-                      label.form-check-label.text-muted
-                        input.form-check-input(type='checkbox')
-                        |                       I agree to all Terms &amp; Conditions
-                  |                 
                   .mt-3
                     a.btn.btn-block.btn-primary.btn-lg.font-weight-medium.auth-form-btn(href='../../index.html') SIGN UP
                   |                 
@@ -93,17 +80,16 @@ html(lang='en')
                     a.text-primary(href='/authentication/login') Login
             |           
             .col-lg-6.register-half-bg.d-flex.flex-row
-              p.text-white.font-weight-medium.text-center.flex-grow.align-self-end Copyright &copy; 2018  All rights reserved.
         // content-wrapper ends
       // page-body-wrapper ends
     // container-scroller
     // plugins:js
-    script(src='../../vendors/base/vendor.bundle.base.js')
+    script(src='/assets/admin/vendors/base/vendor.bundle.base.js')
     // endinject
     // inject:js
-    script(src='../../js/off-canvas.js')
+    script(src='/assets/admin/js/off-canvas.js')
     |   
-    script(src='../../js/hoverable-collapse.js')
+    script(src='/assets/admin/js/hoverable-collapse.js')
     |   
-    script(src='../../js/template.js')
+    script(src='/assets/admin/js/template.js')
     // endinject

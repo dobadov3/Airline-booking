@@ -1,13 +1,13 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
 var customerSchema = new mongoose.Schema({
-    email: String,
-    username: String,
+    username: String, 
     password: String,
     name: String,
+    date_of_birth: Date,
+    email: String,
     phone: String,
-    country: String,
-    date_of_birth: String,
+    gender: String
 });
 
 var Customer = mongoose.model("Customer", customerSchema, "customer");
