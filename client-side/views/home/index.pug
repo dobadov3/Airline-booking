@@ -24,3 +24,14 @@ block contents
     // CONTACT SECTION
     include ../layouts/components/contact
     // CONTACT SECTION END
+block script 
+    script.
+        function changeType(select){
+        if(select.value === "one-way"){
+        document.getElementById('arrival_time').disabled = true;
+        }else{
+        document.getElementById('arrival_time').disabled = false;
+        }
+        }
+        var select = document.getElementById('form-type-select')
+        changeType(select)

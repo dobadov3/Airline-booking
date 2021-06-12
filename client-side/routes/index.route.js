@@ -5,7 +5,7 @@ const authenticationRoute = require('./authentication.route');
 const router = function(app) {
     app.use("/", homeRoute);
     app.use("/authentication", authenticationRoute);
-    app.use("/flight", flightRoute);
+    app.use("/flights", flightRoute);
 };
 
 module.exports = router;

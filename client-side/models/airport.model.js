@@ -1,7 +1,8 @@
 var mongoose = require("mongoose");
 
 var airportSchema = new mongoose.Schema({
-    name: String
+    name: String,
+    code: String
 });
 
 var Airport = mongoose.model("Airport", airportSchema, "airport");

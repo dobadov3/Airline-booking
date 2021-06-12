@@ -94,7 +94,7 @@ body {
 }
 
 main{
-    min-height: 90vh;
+    min-height: 100vh;
 }
 /* [ 1.1.2 Paragraph ] */
 p {
@@ -4085,6 +4085,67 @@ i.icon-bg {
     background: rgba(0, 0, 0, 0.55);
 }
 
+.container-progressbar {
+    width: 1000px;
+    margin: 100px auto; 
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 999;
+    transform: translate(-50%, 50px);
+  }
+  .progressbar {
+      counter-reset: step;
+  }
+  .progressbar li {
+      list-style-type: none;
+      width: 25%;
+      float: left;
+      font-size: 12px;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      color: #7d7d7d;
+  }
+  .progressbar li:before {
+      width: 30px;
+      height: 30px;
+      content: counter(step);
+      counter-increment: step;
+      line-height: 30px;
+      border: 2px solid #7d7d7d;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      border-radius: 50%;
+      background-color: white;
+  }
+  .progressbar li:after {
+      width: 100%;
+      height: 2px;
+      content: '';
+      position: absolute;
+      background-color: #7d7d7d;
+      top: 15px;
+      left: -50%;
+      z-index: -1;
+  }
+  .progressbar li:first-child:after {
+      content: none;
+  }
+  .progressbar li.active {
+      color: green;
+  }
+  .progressbar li.active:before {
+      font-family: "FontAwesome";
+      border-color: #55b776;
+      content: '\f00c';
+      font-weight: 900;
+}
+  .progressbar li.active + li:after {
+      background-color: #55b776;
+  }
+
 .login {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.5);
@@ -4145,4 +4206,100 @@ i.icon-bg {
 .signUp .social-network i {
     font-size: 30px;
     padding: 20px;
+}
+
+.table-route{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    z-index: 9999;
+}
+
+.btn-booking{
+    padding: 2px 12px;
+}
+
+.booking-form-container{
+    transform: translateY(200px);
+    padding: 0 16px;
+    overflow: hidden;
+}
+
+.w-500{
+    width: 500px !important;
+}
+
+.ticket-container{
+  margin-top: 20px;
+}
+
+.ticket-container h4{
+  padding: 16px
+}
+
+.ticket-container .ticket-item{
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  padding: 16px;
+
+}
+
+.ticket-container .ticket-item .seat-item{
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.ticket-container .ticket-item .seat-item.availabled{
+  background-color: rgba(113, 192, 22, 0.2);
+}
+
+.ticket-container .ticket-item .seat-item.disabled{
+  background-color: rgba(255, 71, 71, 0.2);
+}
+
+.row.description-container{
+  margin-top: 30px;
+}
+
+.description{
+  display: flex;
+}
+
+.description .des-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 16px;
+  font-weight: 500;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.description .seat-item{
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.description .seat-item.availabled{
+  background-color: rgba(113, 192, 22, 0.2);
+}
+
+.description .seat-item.disabled{
+  background-color: rgba(255, 71, 71, 0.2);
+}
+
+main{
+    position: relative;
+}
+
+.group-form{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(-50%, -50%);
 }
