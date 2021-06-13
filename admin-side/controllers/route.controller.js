@@ -38,7 +38,7 @@ module.exports.postCreate = async function (req, res) {
     });
     var business_class = await TicketClass.findOne({ name: "Hạng thương gia" });
     req.body.route_id = route._id;
-    req.body.status_id = status._id;
+    //req.body.status_id = status._id;
 
     RouteDetail.create(req.body, (err, docs) => {
         if (err) {
@@ -135,8 +135,8 @@ module.exports.getEdit = async function (req, res) {
                 return;
             }
         });
-        var a = await Airport.findById(rd.arrival_airport_id); 
-        var d = await Airport.findById(rd.depart_airport_id); 
+        var a = await Airport.findById(rd.arrival_airport_id);
+        var d = await Airport.findById(rd.depart_airport_id);
         var plane = await Airplane.findById(rd.airplane_id);
 
         rd.depart_airport = d.name;
@@ -145,7 +145,7 @@ module.exports.getEdit = async function (req, res) {
         rDetail.push(rd)
         id = a._id
     }
-    
+
     res.render("./route/edit", {
         route,
         rDetail,

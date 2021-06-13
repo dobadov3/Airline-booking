@@ -1,151 +1,160 @@
 include ./process-bar
-.booking-form-container 
-  .row
-    .col-sm-3
-      .row.mb-2
-        .col-sm-12
-          .card
-            .card-body
-              h5.card-title.text-center.text-primary= route.dTime
-              |         
-              p.card-text.text-center= `${depart_airport.name} => ${arrival_airport.name}`
-              p.card-text Mã chuyến bay: 
-                strong= route.code
-              p.card-text Sân bay:
-                strong= ` ${depart_airport.code} => ${arrival_airport.code}` 
-              p.card-text Ngày khởi hành: 
-                strong= route.dTime
-              p.card-text Ngày đến nơi dự tính: 
-                strong= route.aTime
-      .row
-        .col-sm-12
-          .card.text-center
-            .card-body
-              h5.card-title.text-primary Lịch trình chuyến đi
-              |         
-              table.table 
-                thead 
-                  tr 
-                    th Sân bay đi
-                    th Sân bay đến
-                    th Mã máy bay
-                tbody  
-                  tr 
-                    td Sân bay đi
-                    td Sân bay đến
-                    td Mã máy bay
-    .col-sm-3
-      .card
-        .card-body
-          h5.card-title.text-center.text-primary Sơ đồ ghế
-          |     
-          .ticket-container.mb-5 
-            .row
-              .col-lg-12
-                .ticket-item
-                  h6.text-center.card-title Vé hạng phổ thông
-                  .container
-                    .row
-                      //- each et in economy_ticket 
-                      //-   if (et.status === "Vẫn còn")
-                      //-     .col-lg-1
-                      //-       .seat-item.availabled
-                      //-   if (et.status === "Đã đặt")
-                      //-     .col-lg-1
-                      //-       .seat-item.disabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                      .col-lg-1
-                        .seat-item.availabled
-                    .row.description-container  
-                      .col-lg-12
-                        .float-right 
-                          .description
-                            .des-item 
-                              .seat-item.availabled 
-                              span Còn Vé
-                            .des-item 
-                              .seat-item.disabled 
-                              span Đã đặt
-    .col-sm-3
-      .card
-        .card-body
-          h5.card-title.text-center.text-primary Sơ đồ ghế
-          |     
-          .ticket-container.mb-5 
-            .row
-              .col-lg-12
-                .ticket-item
-                  h6.text-center.card-title Vé hạng phổ thông đặc biệt
-                  .container
-                    .row 
-                      //- each pt in premium_ticket 
-                      //-   if (pt.status === "Vẫn còn")
-                      //-     .col-lg-1
-                      //-       .seat-item.availabled
-                      //-   if (pt.status === "Đã đặt")
-                      //-     .col-lg-1
-                      //-       .seat-item.disabled
-                    .row.description-container 
-                      .col-lg-12
-                        .float-right 
-                          .description
-                            .des-item 
-                              .seat-item.availabled 
-                              span Còn Vé
-                            .des-item 
-                              .seat-item.disabled 
-                              span Đã đặt
-    .col-sm-3
-      .card
-        .card-body
-          h5.card-title.text-center.text-primary Sơ đồ ghế
-          |     
-          .ticket-container.mb-5 
-            .row
-              .col-lg-12
-                .ticket-item
-                  h6.text-center.card-title Vé hạng thương gia
-                  .container
-                    .row 
-                      //- each bt in business_ticket 
-                      //-   if (bt.status === "Vẫn còn")
-                      //-     .col-lg-1
-                      //-       .seat-item.availabled
-                      //-   if (bt.status === "Đã đặt")
-                      //-     .col-lg-1
-                      //-       .seat-item.disabled
-                    .row.description-container 
-                      .col-lg-12
-                        .float-right 
-                          .description
-                            .des-item 
-                              .seat-item.availabled 
-                              span Còn Vé
-                            .des-item 
-                              .seat-item.disabled 
-                              span Đã đặt
+.row
+  .booking-form-container
+    .row
+      .col-sm-3
+        .row.mb-2
+          .col-sm-12
+            .card
+              .card-body
+                h5.card-title.text-center.text-primary= route.dTime
+                |
+                p.card-text.text-center= `${depart_airport.name} => ${arrival_airport.name}`
+                p.card-text Mã chuyến bay:
+                  strong= route.code
+                p.card-text Sân bay:
+                  strong= ` ${depart_airport.code} => ${arrival_airport.code}`
+                p.card-text Ngày khởi hành:
+                  strong= route.dTime
+                p.card-text Ngày đến nơi dự tính:
+                  strong= route.aTime
+        .row
+          .col-sm-12
+            .card.text-center
+              .card-body
+                h5.card-title.text-primary Lịch trình chuyến đi
+                |
+                table.table
+                  thead
+                    tr
+                      th Sân bay đi
+                      th Sân bay đến
+                      th Mã máy bay
+                  tbody
+                    tr
+                      td Sân bay đi
+                      td Sân bay đến
+                      td Mã máy bay
+      .col-sm-3
+        .card
+          .card-body
+            h5.card-title.text-center.text-primary Sơ đồ ghế
+            |
+            .ticket-container.mb-5
+              .row
+                .col-lg-12
+                  .ticket-item
+                    h6.text-center.card-title Vé hạng phổ thông
+                    .container
+                      .row
+                        //- each et in economy_ticket
+                        //-   if (et.status === "Vẫn còn")
+                        //-     .col-lg-1
+                        //-       .seat-item.availabled
+                        //-   if (et.status === "Đã đặt")
+                        //-     .col-lg-1
+                        //-       .seat-item.disabled
+                        -var n = 0
+                        while (n < route_detail[0].airplane_id.economy_seatNum)
+                          .seat-item.availabled
+                          - n++
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                        //- .col-lg-1
+                        //-   .seat-item.availabled
+                      .row.description-container
+                        .col-lg-12
+                          .float-right
+                            .description
+                              .des-item
+                                .seat-item.availabled
+                                span Còn Vé
+                              .des-item
+                                .seat-item.disabled
+                                span Đã đặt
+      .col-sm-3
+        .card
+          .card-body
+            h5.card-title.text-center.text-primary Sơ đồ ghế
+            |
+            .ticket-container.mb-5
+              .row
+                .col-lg-12
+                  .ticket-item
+                    h6.text-center.card-title Vé hạng phổ thông đặc biệt
+                    .container
+                      .row
+                        -var n = 0
+                          while (n < route_detail[0].airplane_id.premium_economy_seatNum)
+                            .seat-item.availabled
+                            - n++
+                        //- each pt in premium_ticket
+                        //-   if (pt.status === "Vẫn còn")
+                        //-     .col-lg-1
+                        //-       .seat-item.availabled
+                        //-   if (pt.status === "Đã đặt")
+                        //-     .col-lg-1
+                        //-       .seat-item.disabled
+                      .row.description-container
+                        .col-lg-12
+                          .float-right
+                            .description
+                              .des-item
+                                .seat-item.availabled
+                                span Còn Vé
+                              .des-item
+                                .seat-item.disabled
+                                span Đã đặt
+      .col-sm-3
+        .card
+          .card-body
+            h5.card-title.text-center.text-primary Sơ đồ ghế
+            |
+            .ticket-container.mb-5
+              .row
+                .col-lg-12
+                  .ticket-item
+                    h6.text-center.card-title Vé hạng thương gia
+                    .container
+                      .row
+                        -var n = 0
+                        while (n < route_detail[0].airplane_id.business_seatNum)
+                          .seat-item.availabled
+                          - n++
+                        //- each bt in business_ticket
+                        //-   if (bt.status === "Vẫn còn")
+                        //-     .col-lg-1
+                        //-       .seat-item.availabled
+                        //-   if (bt.status === "Đã đặt")
+                        //-     .col-lg-1
+                        //-       .seat-item.disabled
+                      .row.description-container
+                        .col-lg-12
+                          .float-right
+                            .description
+                              .des-item
+                                .seat-item.availabled
+                                span Còn Vé
+                              .des-item
+                                .seat-item.disabled
+                                span Đã đặt
 .group-form
-  form(action="")            
+  form(action="")
     button.btn.btn-outline-success(type="submit") Tiếp tục
-      i(class="fal fa-chevron-double-right") 
+      i(class="fal fa-chevron-double-right")

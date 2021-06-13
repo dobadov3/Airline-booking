@@ -20,7 +20,7 @@
     + Color Functions Mixins
     + Badge Mixins
     + Blockquote Mixins
-    
+
   * Core Styles
     + Reset Styles
     + Fonts
@@ -43,7 +43,7 @@
     + Lists
     + Tables
   * Plugin overrides
-    + Data-tables  
+    + Data-tables
   * Landing screens
     + Auth
   * Layout
@@ -21917,7 +21917,7 @@ dl li {
 .ticket-container .ticket-item{
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
   padding: 16px;
-
+  display: flex;
 }
 
 .ticket-container .ticket-item .seat-item{
@@ -21926,6 +21926,7 @@ dl li {
   height: 40px;
   margin-bottom: 10px;
   font-size: 12px;
+  position: relative;
 }
 
 .ticket-container .ticket-item .seat-item.availabled{
