@@ -9,7 +9,7 @@
  * ------------------------------------------------------------------ */
 
 /* ------------------------------------------------------------------
-   
+
     [Table of contents]
     1. Elements
         1.1. Typhography
@@ -52,15 +52,15 @@
         	 2.1.5. Reservation Form
         	 2.1.6. Event Box
         	 2.1.7. Opening Hours
-        2.2. About 
-        	 2.2.1. Block Counter 
+        2.2. About
+        	 2.2.1. Block Counter
         	 2.2.2. Chef List
         2.3. Blog
         	 2.3.1. Blog List
         	 2.3.2. Blog Grid
-        	 2.3.3. Related Posts 
+        	 2.3.3. Related Posts
         	 2.3.4. Comment Box
-        	 2.3.5. Comment Form 
+        	 2.3.5. Comment Form
         	 2.3.6. Blog Grid
         	 2.3.7. Blog Paging
         2.4. Contact
@@ -79,7 +79,7 @@
     	4.2. Footer Logo
     	4.3. Footer Menu
     	4.4. Footer Bottom
-    
+
 ------------------------------------------------------------------ */
 
 /* ----------------------------------------- 1. Elements ----------------------------------------- */
@@ -4087,12 +4087,10 @@ i.icon-bg {
 
 .container-progressbar {
     width: 1000px;
-    margin: 100px auto; 
-    position: absolute;
+    margin: 30px auto;
+    position: relative;
     top: 0;
-    left: 50%;
     z-index: 999;
-    transform: translate(-50%, 50px);
   }
   .progressbar {
       counter-reset: step;
@@ -4221,9 +4219,10 @@ i.icon-bg {
 }
 
 .booking-form-container{
-    transform: translateY(200px);
+    margin-bottom: 20px;
     padding: 0 16px;
     overflow: hidden;
+    height: 100%;
 }
 
 .w-500{
@@ -4248,7 +4247,7 @@ i.icon-bg {
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
   width: 30px;
   height: 30px;
-  margin-bottom: 10px;
+  margin: 5px;
   font-size: 12px;
 }
 
@@ -4266,6 +4265,7 @@ i.icon-bg {
 
 .description{
   display: flex;
+  justify-content: center;
 }
 
 .description .des-item{

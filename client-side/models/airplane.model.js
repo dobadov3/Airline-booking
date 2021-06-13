@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
+let mongoose = require("mongoose");
 
-var airplaneSchema = new mongoose.Schema({
+let airplaneSchema = new mongoose.Schema({
     airplane_company_id: String,
     name: String,
     economy_seatNum: Number,
@@ -8,6 +8,6 @@ var airplaneSchema = new mongoose.Schema({
     premium_economy_seatNum: Number,
 });
 
-var Airplane = mongoose.model("Airplane", airplaneSchema, "airplane");
+let Airplane = mongoose.model("Airplane", airplaneSchema, "airplane");
 
 module.exports = Airplane;

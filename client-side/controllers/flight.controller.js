@@ -1,6 +1,7 @@
 const Route = require('../models/route.model');
 const Airport = require('../models/airport.model');
 const RouteDetail = require('../models/route_detail.model');
+const Airplane = require('../models/airplane.model')
 
 module.exports.get = async function (req, res) {
     var routes = await Route.find();
@@ -59,7 +60,7 @@ module.exports.search = async function(req, res){
                 );
 
                 routes[i].round_trip = route2;
-        
+
                 routes[i].depart_airport = depart_airport.code;
                 routes[i].arrival_airport = arrival_airport.code;
             }
@@ -79,6 +80,7 @@ module.exports.oneWay = async function(req, res){
     var route = await Route.findById(route_id);
 
     var route_detail = await RouteDetail.find({route_id})
+        .populate('airplane_id')
 
     var depart_airport = await Airport.findById(route.depart_airport_id);
     var arrival_airport = await Airport.findById(route.arrival_airport_id);
