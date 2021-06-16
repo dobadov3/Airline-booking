@@ -9,7 +9,7 @@ const Ticket = require("../models/ticket.model");
 const TicketClass = require("../models/ticket_class.model");
 
 module.exports.get = async function (req, res) {
-    var routes = await Route.find();
+    var routes = await Route.find().populate("status_id");
     var airports = await Airport.find();
     var airplanes = await Airplane.find();
 
@@ -102,6 +102,8 @@ module.exports.getEdit = async function (req, res) {
     var airports = await Airport.find();
     var airplanes = await Airplane.find();
 
+    var status = await Status.find();
+
     var route = await Route.findById(routeID);
     var route_detail = await RouteDetail.find({route_id: routeID})
     var rDetail = [];
@@ -130,6 +132,7 @@ module.exports.getEdit = async function (req, res) {
                     economy_ticket,
                     premium_ticket,
                     business_ticket,
+                    status,
                     error: "Bạn không thể thêm cùng chuyến bay"
                 });
                 return;
@@ -154,18 +157,17 @@ module.exports.getEdit = async function (req, res) {
         economy_ticket,
         premium_ticket,
         business_ticket,
+        status,
     });
 };
 
 module.exports.postEdit = async function (req, res) {
-    var airport = await Airport.findById(req.params.airportID);
-    _.extend(airport, req.body);
-    airport.save((err, docs) => {
-        if (err) {
-            console.log(err);
-        }
-    });
-    res.redirect("/routes");
+    var route = await Route.findById(req.params.routeID);
+
+    _.extend(route, req.body);
+    route.save();
+
+    res.redirect("back");
 };
 
 module.exports.delete = async function (req, res) {

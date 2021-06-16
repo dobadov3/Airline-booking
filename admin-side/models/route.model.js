@@ -8,7 +8,11 @@ var routeSchema = new mongoose.Schema({
     depart_time: Date,
     arrival_time: Date,
     code: String,
-    price: Number
+    price: Number,
+    status_id: {
+        type: String, 
+        ref: 'Status'
+    }
 });
 
 routeSchema.virtual("dTime").get(function () {

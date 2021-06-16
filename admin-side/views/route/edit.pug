@@ -4,7 +4,7 @@ block contents
       .card
         .card-body
           h4.card-title= `Edit ${route.code}`
-          form.forms-sample.mb-5(method="POST", action=`/airports/edit/${route._id}`)
+          form.forms-sample.mb-5(method="POST", action=`/routes/edit/${route._id}`)
             .form-group
               label(for='exampleInputName1') Mã chuyến bay
               input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="name" value=route.code disabled)
@@ -14,6 +14,17 @@ block contents
             .form-group
               label(for='exampleInputName1') Ngày đến
               input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="name" value=route.aTime disabled)     
+            .form-group
+              label(for='exampleInputName1') Tình trạng bay
+              select.form-control(type='text' name="status_id")   
+                each s in status
+                  if (s._id.equals(route.status_id)) 
+                    option(value=s._id selected)= s.name 
+                  else 
+                    option(value=s._id)= s.name 
+
+            .float-right 
+              button.btn.btn-primary(type="submit") Cập nhật
           h4.card-title= `Hành trình chuyến bay`
           if (error)
             div(class="alert alert-danger w-25" role="alert")= error

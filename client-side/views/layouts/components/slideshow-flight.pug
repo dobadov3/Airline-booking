@@ -50,29 +50,34 @@
           a.uk-position-center-right.uk-position-small.uk-hidden-hover(href='#', data-uk-slidenav-next='', data-uk-slideshow-item='next')
           // Slideshow Nav End
   .container.table-route
-    table.table.text-white
-      thead 
-        tr 
-          th Mã chuyến bay
-          th Sân bay đi
-          th Sân bay đến
-          th Ngày khởi hành
-          th Ngày đến nơi
-          th 
-      tbody 
-        if (routes)
-          each route in routes
+    if (routes)
+      if (routes.length === 0)
+        h1.text-center.text-white Không có chuyến bay 
+      else
+        table.table.text-white
+          thead 
             tr 
-              td= route.code
-              td= route.depart_airport
-              td= route.arrival_airport
-              td= route.dTime
-              td= route.aTime
-              td
-                form(method="GET" action=`${link}`)
-                  input(type="hidden" name="route_id" value=`${route._id}`)
-                  if (type_route === 'round-trip')
-                    input(type="hidden" name="round_trip_id" value=`${route.round_trip._id}`)
+              th Mã chuyến bay
+              th Sân bay đi
+              th Sân bay đến
+              th Ngày khởi hành
+              th Ngày đến nơi
+              th 
+          tbody 
+            if (routes)
+              each route in routes
+                tr 
+                  td= route.code
+                  td= route.depart_airport
+                  td= route.arrival_airport
+                  td= route.dTime
+                  td= route.aTime
+                  td
+                    form(method="GET" action=`${link}`)
+                      input(type="hidden" name="route_id" value=`${route._id}`)
+                      if (type_route === 'round-trip')
+                        input(type="hidden" name="round_trip_id" value=`${route.round_trip._id}`)
 
-                  button.btn.btn-light.btn-booking(type="submit") Đặt vé 
-                
+                      button.btn.btn-light.btn-booking(type="submit") Đặt vé 
+    else 
+      h1.text-center.text-white Không có chuyến bay 

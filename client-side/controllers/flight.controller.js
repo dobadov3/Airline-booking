@@ -7,11 +7,13 @@ const TicketClass = require('../models/ticket_class.model')
 const Customer = require('../models/customer.model');
 const Bill = require('../models/bill.model')
 const BillDetail = require('../models/bill_detail.model')
+const Status = require('../models/status.model')
 var paypal = require("paypal-rest-sdk");
 var shortId = require('short-id')
 
 module.exports.get = async function (req, res) {
-    var routes = await Route.find();
+    var status = await Status.findOne({name: 'normal'})
+    var routes = await Route.find({status_id: status._id});
 
     for (let i = 0; i < routes.length; i++) {
         var depart_airport = await Airport.findById(routes[i].depart_airport_id)
@@ -31,8 +33,13 @@ module.exports.get = async function (req, res) {
 
 module.exports.search = async function(req, res){
     var { type_route, depart_airport_id, arrival_airport_id, depart_time, arrival_time } = req.query;
-
-    var routes = await Route.find({ depart_airport_id, arrival_airport_id, depart_time: {$gte: depart_time} });
+    var status = await Status.findOne({ name: "normal" });
+    var routes = await Route.find({
+        depart_airport_id,
+        arrival_airport_id,
+        depart_time: { $gte: depart_time },
+        status_id: status._id
+    });
 
     if (type_route === "one-way"){
         var link = "/flights/booking/one-way";

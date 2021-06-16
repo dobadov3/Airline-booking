@@ -52,6 +52,7 @@ block contents
                             th Sân bay đến       
                             th Ngày đi       
                             th Ngày đến       
+                            th Trạng thái     
                             th
                             th     
                     tbody
@@ -62,6 +63,18 @@ block contents
                                 td= route.arrival_airport        
                                 td= route.dTime        
                                 td= route.aTime        
+                                td 
+                                    case (route.status_id.name)
+                                        when "normal"    
+                                            span.badge.badge-primary Normal
+                                        when "checking"  
+                                            span.badge.badge-warning Checking  
+                                        when "Đang bay"    
+                                            span.badge.badge-info Đang bay
+                                        when "Hoàn thành"    
+                                            span.badge.badge-success Hoàn thành
+                                        when "Đã hủy"    
+                                            span.badge.badge-danger Đã hủy  
                                 td
                                     a(href=`/routes/edit/${route._id}`)
                                         button.btn.btn-inverse-primary.btn-icon(type='button')

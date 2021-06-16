@@ -5,7 +5,10 @@ var routeDetailSchema = new mongoose.Schema({
     airplane_id: String,
     depart_airport_id: String,
     arrival_airport_id: String,
-    status_id: String,
+    status_id: {
+        type: String,
+        ref: "Status"
+    },
 });
 
 var RouteDetail = mongoose.model("RouteDetail", routeDetailSchema, "route_detail");
