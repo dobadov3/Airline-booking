@@ -30,15 +30,20 @@ header#impx-header
             div(class='uk-width-1-2@xl uk-width-1-2@l uk-width-1-2@m uk-width-1-1@s')
               .impx-top-social
                 ul
-                  li
-                    a(href='#')
-                      i.fab.fa-facebook-f
-                      | Facebook
-                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                  li
-                    a(href='/authentication')
-                      i.fal.fa-user
-                      | Login
+                  if (!checkLogin)
+                    li
+                      a(href='/authentication')
+                        i.fal.fa-user
+                        | Login
+                  else
+                    li
+                      a(href='/profile')
+                        i.fal.fa-address-card
+                        | Profile
+                    li
+                      a(href='/authentication/logout')
+                        i.fal.fa-user
+                        | Logout
             // header social media end
       // Top Header End
       .uk-container.uk-container-expand
@@ -61,7 +66,7 @@ header#impx-header
                         | Home
                         .uk-navbar-subtitle Welcome
                   li.uk-parent.uk-active
-                    a.uk-navbar-nav-subtitle(href='/')
+                    a.uk-navbar-nav-subtitle(href='/profile/history')
                       div
                         | Lịch sử 
                         .uk-navbar-subtitle Lịch sử đặt vé
@@ -70,35 +75,8 @@ header#impx-header
                       div
                         | Chuyến bay
                         .uk-navbar-subtitle lịch chuyến bay
-                  li.uk-parent
-                    a.uk-navbar-nav-subtitle(href='#')
-                      div
-                        | Pages
-                        .uk-navbar-subtitle the Other Pages
-                    .uk-navbar-dropdown
-                      ul.uk-nav.uk-navbar-dropdown-nav
-                        li
-                          a(href='about.html') About Us
-                        li
-                          a(href='testimonial.html') Testimonial
-                        li
-                          a(href='blog.html') Blog
-                        li
-                          a(href='single-post.html') Single Post
-                        li
-                          a(href='gallery.html') Gallery
-                        li
-                          a(href='element.html') Element     
                 // Navigation Items End
           // Header Navigation End
           // Promo Ribbon
-          .uk-width-auto.uk-position-relative
-            .ribbon
-              i
-                span
-                  s
-                  | 30% 
-                  span Off!
-                  s
           // Promo Ribbon End
 // HEADER END

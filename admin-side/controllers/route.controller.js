@@ -38,7 +38,7 @@ module.exports.postCreate = async function (req, res) {
     });
     var business_class = await TicketClass.findOne({ name: "Hạng thương gia" });
     req.body.route_id = route._id;
-    //req.body.status_id = status._id;
+    req.body.status_id = status._id;
 
     RouteDetail.create(req.body, (err, docs) => {
         if (err) {
@@ -55,7 +55,7 @@ module.exports.postCreate = async function (req, res) {
         var economy_ticket = new Ticket({
             route_id: req.body.route_id,
             ticket_class_id: economy_class._id,
-            price: req.body.price,
+            price: req.body.price * economy_class.multiply,
             code: code,
             status: "Vẫn còn",
         });
@@ -71,7 +71,7 @@ module.exports.postCreate = async function (req, res) {
         var premium_ticket = new Ticket({
             route_id: req.body.route_id,
             ticket_class_id: premium_class._id,
-            price: req.body.price,
+            price: req.body.price * premium_class.multiply,
             code: code,
             status: "Vẫn còn",
         });
@@ -87,7 +87,7 @@ module.exports.postCreate = async function (req, res) {
         var business_ticket = new Ticket({
             route_id: req.body.route_id,
             ticket_class_id: business_class._id,
-            price: req.body.price,
+            price: req.body.price * business_class.multiply,
             code: code,
             status: "Vẫn còn",
         });

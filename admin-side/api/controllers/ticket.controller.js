@@ -16,6 +16,7 @@ module.exports.getTicketByRouteID = async function(req, res){
     tickets.forEach((item) => {
         item.route = route.code;
         item.ticket_class = ticket_class.name
+        item.price_multiply = item.price * ticket_class.multiply
     });
 
     res.json(tickets);
@@ -36,6 +37,7 @@ module.exports.getTicketByCode = async function(req, res){
     tickets.forEach((item) => {
         item.route = route.code;
         item.ticket_class = ticket_class.name
+        item.price_multiply = item.price * ticket_class.multiply;
     });
 
     res.json(tickets);

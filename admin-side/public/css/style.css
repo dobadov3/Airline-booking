@@ -21918,6 +21918,7 @@ dl li {
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
   padding: 16px;
   display: flex;
+  flex-direction: column;
 }
 
 .ticket-container .ticket-item .seat-item{

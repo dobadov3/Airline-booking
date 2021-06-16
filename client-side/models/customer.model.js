@@ -7,13 +7,26 @@ var customerSchema = new mongoose.Schema({
     date_of_birth: Date,
     email: String,
     phone: String,
-    gender: String
+    gender: String,
+    cmnd: String,
+    job: String,
+    date_create: {
+        type: Date,
+        default: new Date()
+    }
 });
 
 customerSchema.virtual('date').get( function() {
     var m = this.date_of_birth.getMonth() + 1;
     var d = this.date_of_birth.getDate();
     var y = this.date_of_birth.getFullYear();
+    return d + "/" + m + "/" + y;
+})
+
+customerSchema.virtual('d_c').get( function() {
+    var m = this.date_create.getMonth() + 1;
+    var d = this.date_create.getDate();
+    var y = this.date_create.getFullYear();
     return d + "/" + m + "/" + y;
 })
 

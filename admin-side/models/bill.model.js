@@ -1,12 +1,23 @@
 var mongoose = require("mongoose");
 
 var billSchema = new mongoose.Schema({
-    customer_id: String,
+    customer_id: {
+        type: String,
+        ref: 'Customer'
+    },
     date: {
         type: Date,
-        default: new Date()
+        default: new Date(),
     },
-    total_payment: Number
+    total_payment: Number,
+    code: String
+});
+
+billSchema.virtual("date_create").get(function () {
+    var m = this.date.getMonth() + 1;
+    var d = this.date.getDate();
+    var y = this.date.getFullYear();
+    return d + "/" + m + "/" + y;
 });
 
 var Bill = mongoose.model("Bill", billSchema, "bill");

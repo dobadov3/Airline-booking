@@ -9,6 +9,8 @@ const adminRoute = require("./admin.route");
 const roleRoute = require("./role.route");
 const authenticationRoute = require("./authentication.route");
 const ticketRoute = require('./ticket.route')
+const profileRoute = require("./profile.route");
+const billRoute = require("./bill.route");
 
 //api
 const accountAPI = require('../api/routes/account.route');
@@ -26,6 +28,8 @@ const router = function(app){
     app.use("/roles", roleRoute);
     app.use("/authentication", authenticationRoute);
     app.use("/tickets", ticketRoute);
+    app.use("/profiles", profileRoute);
+    app.use("/bills", billRoute);
     
     app.use("/api/account", accountAPI);
     app.use("/api/ticket", ticketAPI);

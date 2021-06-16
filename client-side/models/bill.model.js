@@ -6,7 +6,15 @@ var billSchema = new mongoose.Schema({
         type: Date,
         default: new Date()
     },
-    total_payment: Number
+    total_payment: Number,
+    code: String
+});
+
+billSchema.virtual("date_create").get(function () {
+    var m = this.date.getMonth() + 1;
+    var d = this.date.getDate();
+    var y = this.date.getFullYear();
+    return d + "/" + m + "/" + y;
 });
 
 var Bill = mongoose.model("Bill", billSchema, "bill");

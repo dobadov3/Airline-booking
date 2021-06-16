@@ -4,23 +4,17 @@ var ticketItem = function(ticket){
         <td>${ticket.code}</td>
         <td>${ticket.route}</td>
         <td>${ticket.ticket_class}</td>
-        <td>${ticket.price}</td>
+        <td>${ticket.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
         ${
             (() => {
                 if (ticket.status === "Vẫn còn"){
-                    return `<td><span class="badge badge-success">${ticket.status}</span></td>`;
+                    return `<td><span class="badge badge-success"><a href="/tickets/change-status/${ticket._id}" class="text-white text-decoration-none" title="Click to change status">${ticket.status}</a></span></td>`;
                 }else if (ticket.status === "Đã đặt"){
-                    return `<td><span class="badge badge-danger">${ticket.status}</span></td>`;
+                    return `<td><span class="badge badge-danger"><a href="/tickets/change-status/${ticket._id}" class="text-white text-decoration-none" title="Click to change status">${ticket.status}</a></span></td>`;
                 }
             })()
         }
-        <td>
-            <a href="/tickets/edit/${ticket._id}">
-                <button class="btn btn-inverse-primary btn-icon" type="button">
-                    <i class="mdi mdi-pencil"> </i>
-                </button>
-            </a>
-        </td>
+        
     </tr>`
 }
 
@@ -39,8 +33,9 @@ var changeTicket = function(){
 }
 
 var search = function(){
-    var value = document.getElementById("input-search").value;
-    axios.get(`http://localhost:3001/api/ticket/${select_route.value}/${select_ticket_class.value}/${value}`).then(res => {
+    var code = document.getElementById("input-search").value;
+    axios.get(`http://localhost:3001/api/ticket/${select_route.value}/${select_ticket_class.value}/${code}`).then(res => {
+        console.log(res.data)
         var textInner = ''
         res.data.forEach(ticket => {
             textInner += ticketItem(ticket);

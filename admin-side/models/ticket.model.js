@@ -2,8 +2,12 @@ var mongoose = require("mongoose");
 
 var ticketSchema = new mongoose.Schema({
     route_id: String,
-    ticket_class_id: String,
+    ticket_class_id: {
+        type: String,
+        ref: "TicketClass"
+    },
     price: Number,
+    price_multiply: Number,
     status: String,
     code: String,
     route: String,

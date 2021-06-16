@@ -3,12 +3,18 @@ const Airport = require('./airport.model');
 const RouteDetail = require('./route_detail.model')
 
 var routeSchema = new mongoose.Schema({
-    depart_airport_id: String,
-    arrival_airport_id: String,
+    depart_airport_id: {
+        type: String,
+        ref: "Airport",
+    },
+    arrival_airport_id: {
+        type: String,
+        ref: "Airport",
+    },
     depart_time: Date,
     arrival_time: Date,
     code: String,
-    price: Number
+    price: Number,
 });
 
 routeSchema.virtual("dTime").get(function () {
