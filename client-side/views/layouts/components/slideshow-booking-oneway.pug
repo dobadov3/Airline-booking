@@ -53,14 +53,14 @@ form(action=`/flights/booking/one-way/${route._id}` method="GET")
                     .ticket-item
                       h6.text-center.card-title Vé hạng phổ thông
                       .container
-                        .row
+                        .e-flex
                           each et in economy_ticket
                             if (et.status === "Vẫn còn")
-                              .col-lg-1
+                              .e-flex-item
                                 .seat-item.availabled
                                   input.w-100.h-100.seat-input(type="checkbox" name="ticket_id" value=et._id)
                             if (et.status === "Đã đặt")
-                              .col-lg-1
+                              .e-flex-item
                                 .seat-item.disabled
                         .row.description-container
                           .col-lg-12
@@ -86,14 +86,14 @@ form(action=`/flights/booking/one-way/${route._id}` method="GET")
                     .ticket-item
                       h6.text-center.card-title Vé hạng phổ thông đặc biệt
                       .container
-                        .row
+                        .e-flex
                           each pt in premium_ticket
                             if (pt.status === "Vẫn còn")
-                              .col-lg-1
+                              .e-flex-item
                                 .seat-item.availabled
                                   input.w-100.h-100.seat-input(type="checkbox" name="ticket_id" value=pt._id)
                             if (pt.status === "Đã đặt")
-                              .col-lg-1
+                              .e-flex-item
                                 .seat-item.disabled
                         .row.description-container
                           .col-lg-12
@@ -107,7 +107,7 @@ form(action=`/flights/booking/one-way/${route._id}` method="GET")
                                   span Đã đặt
                                 .des-item
                                   .seat-item.selected
-                                  span Đang chọn  
+                                  span Đang chọn
         .col-sm-3
           .card
             .card-body
@@ -119,14 +119,14 @@ form(action=`/flights/booking/one-way/${route._id}` method="GET")
                     .ticket-item
                       h6.text-center.card-title Vé hạng thương gia
                       .container
-                        .row
+                        .e-flex
                           each bt in business_ticket
                             if (bt.status === "Vẫn còn")
-                              .col-lg-1
+                              .e-flex-item
                                 .seat-item.availabled
                                   input.w-100.h-100.seat-input(type="checkbox" name="ticket_id" value=bt._id)
                             if (bt.status === "Đã đặt")
-                              .col-lg-1
+                              .e-flex-item
                                 .seat-item.disabled
                         .row.description-container
                           .col-lg-12

@@ -4247,10 +4247,24 @@ i.icon-bg {
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
   width: 30px;
   height: 30px;
-  margin: 5px;
   font-size: 12px;
 }
 
+.e-flex {
+    --column-space: 20px;
+    --row-space: 20px;
+    --columns: 5;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(-1 * var(--column-space));
+    margin-bottom: calc(-1 * var(--row-space));
+ }
+
+ .e-flex-item {
+    width: calc((100% / var(--columns)) - var(--column-space));
+    margin-left: var(--column-space);
+    margin-bottom: var(--row-space);
+ }
 .ticket-container .ticket-item .seat-item.availabled{
   background-color: rgba(113, 192, 22, 0.2);
 }
