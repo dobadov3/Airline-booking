@@ -9,7 +9,7 @@ const Bill = require('../models/bill.model')
 const BillDetail = require('../models/bill_detail.model')
 const Status = require('../models/status.model')
 var paypal = require("paypal-rest-sdk");
-var shortId = require('short-id')
+var shortId = require('short-id');
 
 module.exports.get = async function (req, res) {
     var status = await Status.findOne({name: 'normal'})
@@ -34,12 +34,14 @@ module.exports.get = async function (req, res) {
 module.exports.search = async function(req, res){
     var { type_route, depart_airport_id, arrival_airport_id, depart_time, arrival_time } = req.query;
     var status = await Status.findOne({ name: "normal" });
+    var today = new Date();
     var routes = await Route.find({
         depart_airport_id,
         arrival_airport_id,
         depart_time: { $gte: depart_time },
         status_id: status._id
     });
+
 
     if (type_route === "one-way"){
         var link = "/flights/booking/one-way";
@@ -205,7 +207,8 @@ module.exports.postBookingOneWay = async function(req, res){
     var bill = await Bill.create(new Bill({
         customer_id: req.signedCookies.userID,
         total_payment: req.body.total_price,
-        code: shortId.generate().toUpperCase()
+        code: shortId.generate().toUpperCase(),
+        date: new Date()
     }));
     
     req.body.total_price = parseFloat(req.body.total_price);
@@ -488,6 +491,7 @@ module.exports.postBookingRoundTrip = async function (req, res) {
             customer_id: req.signedCookies.userID,
             total_payment: req.body.total_price,
             code: shortId.generate().toUpperCase(),
+            date: new Date()
         })
     );
     req.body.total_price = req.body.total_price * 0.000043;
@@ -499,7 +503,7 @@ module.exports.postBookingRoundTrip = async function (req, res) {
         var obj = {
             name: "Vé máy bay",
             sku: ticket.code,
-            price: (ticket.price * 0.000043).toFixed(2),
+            price: parseFloat((ticket.price * 0.000043).toFixed(2)),
             currency: "USD",
             quantity: 1,
         };
@@ -520,7 +524,7 @@ module.exports.postBookingRoundTrip = async function (req, res) {
             var obj = {
                 name: "Vé máy bay",
                 sku: ticket.code,
-                price: (ticket.price * 0.000043).toFixed(2),
+                price: parseFloat((ticket.price * 0.000043).toFixed(2)),
                 currency: "USD",
                 quantity: 1,
             };
@@ -543,7 +547,7 @@ module.exports.postBookingRoundTrip = async function (req, res) {
         var obj = {
             name: "Vé máy bay",
             sku: ticket.code,
-            price: (ticket.price * 0.000043).toFixed(2),
+            price: parseFloat((ticket.price * 0.000043).toFixed(2)),
             currency: "USD",
             quantity: 1,
         };
@@ -564,7 +568,7 @@ module.exports.postBookingRoundTrip = async function (req, res) {
             var obj = {
                 name: "Vé máy bay",
                 sku: ticket.code,
-                price: (ticket.price * 0.0000043).toFixed(2),
+                price: parseFloat((ticket.price * 0.000043).toFixed(2)),
                 currency: "USD",
                 quantity: 1,
             };

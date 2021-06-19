@@ -5,12 +5,11 @@ const Ticket = require('../models/ticket.model')
 const _ = require("lodash");
 
 module.exports.get = async function (req, res) {
-    var bills = await Bill.find().populate('customer_id')
+    var bills = await Bill.find()
     var cancels = await Cancel.find()
         .populate("ticket_id")
         .populate("customer_id")
         .sort({ status: 1 });
-
 
     res.render("./bill/index", {
         bills,

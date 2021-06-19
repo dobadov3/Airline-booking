@@ -1,13 +1,16 @@
 var mongoose = require("mongoose");
+var moment = require("moment-timezone");
 
 var billSchema = new mongoose.Schema({
     customer_id: String,
-    date: {
-        type: Date,
-        default: new Date()
-    },
+    date: Date,
     total_payment: Number,
-    code: String
+    code: String,
+    payment_status: {
+        type: String,
+        default: "Chưa thanh toán",
+    },
+    status_id: String,
 });
 
 billSchema.virtual("date_create").get(function () {

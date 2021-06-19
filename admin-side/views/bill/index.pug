@@ -5,26 +5,28 @@ block contents
         .card
           .card-body
             h4.card-title Hóa đơn
+            .d-flex.justify-content-end 
+                .form-group.d-flex.align-items-center.w-25 
+                    span.mr-3(for="") Mã hóa đơn
+                    input.w-75.form-control.mr-3#input-bill(type="text" placeholder="Mã hóa đơn" onKeyUp="searchBill()")
             .table-responsive
                 table.table.table-striped
                     thead
                         tr
                             th Mã hóa đơn
-                            th Ngày tạo   
-                            th Email người đặt     
+                            th Ngày tạo     
                             th Tổng cộng
                             th 
-                    tbody
-                        each bill in bills
-                            tr
-                                td= bill.code        
-                                td= bill.date_create        
-                                td= bill.customer_id.email        
-                                td= bill.total_payment.toLocaleString('vi', {style : 'currency', currency : 'VND'})          
-                                td
-                                    a(href=`/bills/edit/${bill._id}`)
-                                        button.btn.btn-inverse-primary.btn-icon(type='button')
-                                            i.mdi.mdi-pencil 
+                    tbody#bill-body
+                        //- each bill in bills
+                        //-     tr
+                        //-         td= bill.code        
+                        //-         td= bill.date_create            
+                        //-         td= bill.total_payment.toLocaleString('vi', {style : 'currency', currency : 'VND'})          
+                        //-         td
+                        //-             a(href=`/bills/edit/${bill._id}`)
+                        //-                 button.btn.btn-inverse-primary.btn-icon(type='button')
+                        //-                     i.mdi.mdi-pencil 
     .row
       .col-lg-12.grid-margin.stretch-card
         .card
@@ -35,7 +37,6 @@ block contents
                     thead
                         tr
                             th Ngày tạo   
-                            th Email người đặt     
                             th Tổng cộng
                             th 
                             th 
@@ -43,7 +44,6 @@ block contents
                         each cancel in cancels
                             tr  
                                 td= cancel.date_create        
-                                td= cancel.customer_id.email        
                                 td= cancel.ticket_id.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})          
                                 td
                                     case (cancel.status)
@@ -55,3 +55,58 @@ block contents
                                     a(href=`/bills/edit-cancel/${cancel._id}`)
                                         button.btn.btn-inverse-primary.btn-icon(type='button')
                                             i.mdi.mdi-pencil 
+block script 
+    script.
+        var input = document.getElementById('input-bill')
+        var textInner = ''
+
+        axios.get('http://localhost:3001/api/bills').then(res => {
+            res.data.forEach(bill => {
+                var date = new Date(bill.date)
+                var m = date.getMonth() + 1;
+                var d = date.getDate();
+                var y = date.getFullYear();
+                bill.date_create = d + "/" + m + "/" + y
+                
+                textInner += `<tr>
+                                <td>${bill.code}</td>
+                                <td>${bill.date_create}</td>
+                                <td>${bill.total_payment.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
+                                <td>
+                                    <a href="/bills/edit/${bill._id}">
+                                        <button class="btn btn-inverse-primary btn-icon" type="button">
+                                            <i class="mdi mdi-pencil"> </i>
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>`
+            })
+            document.getElementById('bill-body').innerHTML = textInner
+        })
+
+        var searchBill = function(){
+            textInner = ''
+            axios.get(`http://localhost:3001/api/bills/${input.value}`).then(res => {
+                res.data.forEach(bill => {
+                    var date = new Date(bill.date)
+                    var m = date.getMonth() + 1;
+                    var d = date.getDate();
+                    var y = date.getFullYear();
+                    bill.date_create = d + "/" + m + "/" + y
+                    
+                    textInner += `<tr>
+                                    <td>${bill.code}</td>
+                                    <td>${bill.date_create}</td>
+                                    <td>${bill.total_payment.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
+                                    <td>
+                                        <a href="/bills/edit/${bill._id}">
+                                            <button class="btn btn-inverse-primary btn-icon" type="button">
+                                                <i class="mdi mdi-pencil"> </i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>`
+                })
+                document.getElementById('bill-body').innerHTML = textInner
+            })
+        }

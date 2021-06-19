@@ -7,6 +7,7 @@ const _ = require("lodash");
 const shortid = require('short-id');
 const Ticket = require("../models/ticket.model");
 const TicketClass = require("../models/ticket_class.model");
+var moment = require("moment-timezone");
 
 module.exports.get = async function (req, res) {
     var routes = await Route.find().populate("status_id");
@@ -28,9 +29,15 @@ module.exports.get = async function (req, res) {
 };
 
 module.exports.postCreate = async function (req, res) {
+    var departVN = moment.tz(req.body.depart_time, "Asia/Ho_Chi_Minh");
+    var arrivalVN = moment.tz(req.body.arrival_time, "Asia/Ho_Chi_Minh");
+    req.body.depart_time = departVN
+    req.body.arrival_time = arrivalVN;
+
     req.body.code = shortid.generate().toUpperCase();
-    var route = await Route.create(req.body);
     var status = await Status.findOne({ name: "normal" });
+    req.body.status_id = status._id;
+    var route = await Route.create(req.body);
     var airplane = await Airplane.findById(req.body.airplane_id);
     var economy_class = await TicketClass.findOne({ name: "Hạng phổ thông" });
     var premium_class = await TicketClass.findOne({
@@ -38,8 +45,7 @@ module.exports.postCreate = async function (req, res) {
     });
     var business_class = await TicketClass.findOne({ name: "Hạng thương gia" });
     req.body.route_id = route._id;
-    req.body.status_id = status._id;
-
+    
     RouteDetail.create(req.body, (err, docs) => {
         if (err) {
             console.log(err);

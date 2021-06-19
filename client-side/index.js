@@ -59,13 +59,6 @@ paypal.configure({
 });
 
 
-app.get("/success", (req, res) => {
-    res.render('./flight/success');
-});
-app.get("/fail", (req, res) => {
-    res.send("fail");
-});
-
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });

@@ -33,10 +33,10 @@ block contents
                                             option(value=airplane._id)= airplane.name 
                                 .form-group
                                     label.col-form-label(for='recipient-name') Ngày đi:
-                                    input#recipient-name.form-control(type='date' name="depart_time")
+                                    input#recipient-name.form-control(type='datetime-local' name="depart_time")
                                 .form-group
                                     label.col-form-label(for='recipient-name') Ngày đến:
-                                    input#recipient-name.form-control(type='date' name="arrival_time")
+                                    input#recipient-name.form-control(type='datetime-local' name="arrival_time")
                                 .form-group
                                     label.col-form-label(for='recipient-name') Giá:
                                     input#recipient-name.form-control(type='number' name="price")
@@ -67,8 +67,8 @@ block contents
                                     case (route.status_id.name)
                                         when "normal"    
                                             span.badge.badge-primary Normal
-                                        when "checking"  
-                                            span.badge.badge-warning Checking  
+                                        when "checkin"  
+                                            span.badge.badge-warning Check in  
                                         when "Đang bay"    
                                             span.badge.badge-info Đang bay
                                         when "Hoàn thành"    

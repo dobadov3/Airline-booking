@@ -1,19 +1,31 @@
 var mongoose = require("mongoose");
 
 var customerSchema = new mongoose.Schema({
-    username: String, 
+    username: String,
     password: String,
     name: String,
-    date_of_birth: Date,
+    date_of_birth: {
+        type: Date,
+        default: new Date(2000, 01, 01)
+    },
     email: String,
     phone: String,
-    gender: String,
-    cmnd: String,
-    job: String,
+    gender: {
+        type: String,
+        default: "",
+    },
+    cmnd: {
+        type: String,
+        default: "",
+    },
+    job: {
+        type: String,
+        default: "",
+    },
     date_create: {
         type: Date,
-        default: new Date()
-    }
+        default: new Date(),
+    },
 });
 
 customerSchema.virtual('date').get( function() {

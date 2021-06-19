@@ -9,28 +9,36 @@ block content
             th Số lượng
             th Giá
             th
-        each bd in bill_detail
+        each ticket in tickets
             tr 
-                td= bd.ticket_id.code
+                td= ticket.code
                 td 1
-                td= bd.ticket_id.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                td= ticket.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
                 td
-                    button.btn.btn-primary(type='button', data-bs-toggle='modal', data-bs-target=`#modal-${bd.ticket_id._id}`) Hủy vé
-                    // Modal
-                    .modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true' id=`modal-${bd.ticket_id._id}`)
-                        .modal-dialog.modal-dialog-centered
-                            .modal-content
-                                .modal-header
-                                    h5#exampleModalLabel.modal-title Hủy vé
-                                    |         
-                                    button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
-                                |       
-                                .modal-body Bạn có chắc muốn hủy vé này
-                                .modal-footer
-                                    form(action=`/profile/cancel-ticket/${bd.ticket_id._id}` method="POST") 
-                                        button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Hủy
+                    if (normalStatus._id.equals(ticket.route_id.status_id))
+                        button.btn.btn-primary(type='button', data-bs-toggle='modal', data-bs-target=`#modal-${ticket._id}`) Hủy vé
+                        // Modal
+                        .modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true' id=`modal-${ticket._id}`)
+                            .modal-dialog.modal-dialog-centered
+                                .modal-content
+                                    .modal-header
+                                        h5#exampleModalLabel.modal-title Hủy vé
                                         |         
-                                        button.btn.btn-primary(type='submit') Xác nhận
+                                        button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+                                    |       
+                                    .modal-body Bạn có chắc muốn hủy vé này
+                                    .modal-footer
+                                        form(action=`/profile/cancel-ticket/${ticket._id}` method="POST") 
+                                            button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Hủy
+                                            |         
+                                            button.btn.btn-primary(type='submit') Xác nhận
+        each cancel in cancels
+            tr 
+                td= cancel.ticket_id.code
+                td 1
+                td= cancel.ticket_id.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                td
+                    a.btn.btn-danger(href="javascript: return void()") Đã hủy
     .row.order-info-bottom 
         .col-lg-6
             .order-info 

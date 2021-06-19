@@ -15,6 +15,7 @@ const billRoute = require("./bill.route");
 //api
 const accountAPI = require('../api/routes/account.route');
 const ticketAPI = require("../api/routes/ticket.route");
+const billAPI = require("../api/routes/bill.route");
 
 const router = function(app){
     app.use("/", homeRoute);
@@ -33,6 +34,7 @@ const router = function(app){
     
     app.use("/api/account", accountAPI);
     app.use("/api/ticket", ticketAPI);
+    app.use("/api/bills", billAPI);
 }
 
 module.exports = router;

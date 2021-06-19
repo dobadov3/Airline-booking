@@ -27,6 +27,10 @@ app.use(express.static("public"));
 app.set("views", "./views");
 app.set("view engine", "pug");
 
+
+const flightMiddleware = require('./middlewares/flight.middleware')
+
+app.use(flightMiddleware)
 router(app);
 
 app.listen(port, () => {

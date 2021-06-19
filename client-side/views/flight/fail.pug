@@ -1,0 +1,14 @@
+extends ../layouts/layout
+block contents 
+    -var active_1= 'active'
+    -var active_2= 'active'
+    -var active_3= 'active'
+    -var active_4= 'active'
+
+    include ../layouts/components/process-bar
+
+    .container 
+        .row.d-flex.flex-column.justify-content-center.align-items-center.text-center
+            i(class="fal fa-times-circle text-danger" style="font-size: 1000%")
+            .text-danger(style="font-size: 20px") Đặt vé thất bại
+            a.btn.btn-outline-danger.w-25.mt-3(href="/") Quay về trang chủ 

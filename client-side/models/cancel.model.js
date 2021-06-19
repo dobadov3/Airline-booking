@@ -16,6 +16,10 @@ var cancelSchema = new mongoose.Schema({
     status: {
         type: String,
         default: "Chưa xử lý"
+    },
+    bill_id: {
+        type: String, 
+        ref: "Bill"
     }
 });
 

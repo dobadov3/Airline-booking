@@ -3,6 +3,7 @@ const Bill = require('../models/bill.model')
 const BillDetail = require('../models/bill_detail.model')
 const Ticket = require('../models/ticket.model')
 const Cancel = require('../models/cancel.model');
+const Status = require("../models/status.model");
 const md5 = require('md5')
 const _ = require("lodash");
 
@@ -52,14 +53,33 @@ module.exports.getHistory = async function(req, res){
 
 module.exports.getDetail = async function(req, res){
     var {billID} = req.params
+    var tickets = []
+
+    var cancels = await Cancel.find({
+        customer_id: req.signedCookies.userID,
+        bill_id: billID
+    }).populate("ticket_id");
 
     var bill = await Bill.findById(billID);
 
     var bill_detail = await BillDetail.find({bill_id: billID}).populate('ticket_id')
 
+    var normalStatus = await Status.findOne({name: 'normal'})
+
+    for (let i = 0; i < bill_detail.length; i++) {
+        var ticket = await Ticket.findById(bill_detail[i].ticket_id).populate('route_id');
+
+        tickets.push(ticket);
+    }
+
+    console.log(tickets)
+
     res.render("./profile/detail-history", {
         bill_detail,
         bill,
+        normalStatus,
+        tickets,
+        cancels,
     });
 }
 
@@ -116,13 +136,14 @@ module.exports.cancelTicket = async function (req, res) {
         return;
     }
 
-    await Cancel.create(new Cancel({
+    Cancel.create(new Cancel({
         ticket_id: ticketID,
-        customer_id: req.signedCookies.userID
+        customer_id: req.signedCookies.userID,
+        bill_id: bill._id
     }))
 
     bill.total_payment -= ticket.price;
     bill.save();
 
-    res.redirect('/profile/history')
+    res.redirect('back')
 }
