@@ -10,7 +10,7 @@ const TicketClass = require("../models/ticket_class.model");
 var moment = require("moment-timezone");
 
 module.exports.get = async function (req, res) {
-    var routes = await Route.find().populate("status_id");
+    var routes = await Route.find().populate("status_id").sort({status_id: 1});
     var airports = await Airport.find();
     var airplanes = await Airplane.find();
 
@@ -45,6 +45,8 @@ module.exports.postCreate = async function (req, res) {
     });
     var business_class = await TicketClass.findOne({ name: "Hạng thương gia" });
     req.body.route_id = route._id;
+
+    console.log(economy_class, premium_class, business_class)
     
     RouteDetail.create(req.body, (err, docs) => {
         if (err) {

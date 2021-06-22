@@ -3,30 +3,31 @@ block contents
     .col-12.grid-margin.stretch-card
       .card
         .card-body
-          h4.card-title= `Edit ${customer.name}`
-          form.forms-sample(method="POST", action=`/admins/edit/${customer._id}`)
+          h4.card-title= `Edit ${admin.name}`
+          form.forms-sample(method="POST", action=`/admins/edit/${admin._id}`)
             .form-group
               label(for='exampleInputName1') Username
-              input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="username" value=customer.username)
+              input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="username" value=admin.username)
             .form-group
               label(for='exampleInputName1') Tên khách hàng
-              input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="name" value=customer.name)
+              input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="name" value=admin.name)
             .form-group
               label(for='exampleInputName1') Email
-              input#exampleInputName1.form-control(type='email', placeholder='Tên sân bay' name="email" value=customer.email)
+              input#exampleInputName1.form-control(type='email', placeholder='Tên sân bay' name="email" value=admin.email)
             .form-group
               label(for='exampleInputName1') Ngày sinh
               .d-flex.align-items-center
-                input#input-date.form-control.w-25(type='date', placeholder='Tên sân bay' name="date_of_birth" value=customer.date_of_birth disabled)
+                input#input-date.form-control.w-25(type='date', placeholder='Tên sân bay' name="date_of_birth" value=admin.date_of_birth disabled)
                 a(href="#")
                  i.fal.fa-edit.ml-3#btn-edit(style="font-size: 25px;" onclick="myFunction()")
             .form-group
               label(for='exampleInputName1') Số điện thoại
-              input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="phone" value=customer.phone)
+              input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="phone" value=admin.phone)
             .form-group
               label(for='exampleInputName1') Giới tính
-              input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="gender" value=customer.gender)
-            
+              input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="gender" value=admin.gender)
+            .form-group
+              a(href=`/admins/change-pass/${admin._id}`) Đổi mật khẩu 
             button(type="submit" class="btn btn-primary mr-2") Submit
             button(class="btn btn-light") Cancel          
 block script 

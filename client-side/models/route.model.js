@@ -25,13 +25,35 @@ routeSchema.virtual("dTime").get(function () {
     var m = this.depart_time.getMonth() + 1;
     var d = this.depart_time.getDate();
     var y = this.depart_time.getFullYear();
-    return d + "/" + m + "/" + y;
+    var h = this.depart_time.getHours();
+    var mn = this.depart_time.getMinutes();
+
+    if (mn === 0){
+        mn = '00'
+    }
+
+    if (h === 0){
+        h = '00'
+    }
+
+    return `${d}/${m}/${y} ${h}:${mn}`;
 });
 routeSchema.virtual("aTime").get(function () {
     var m = this.arrival_time.getMonth() + 1;
     var d = this.arrival_time.getDate();
     var y = this.arrival_time.getFullYear();
-    return d + "/" + m + "/" + y;
+    var h = this.arrival_time.getHours();
+    var mn = this.arrival_time.getMinutes();
+
+    if (mn === 0){
+        mn = '00'
+    }
+
+    if (h === 0){
+        h = '00'
+    }
+
+    return `${d}/${m}/${y} ${h}:${mn}`;
 });
 
 routeSchema.post("remove", async function (doc) {

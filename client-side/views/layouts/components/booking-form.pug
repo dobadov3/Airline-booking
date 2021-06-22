@@ -29,12 +29,12 @@ html
                     .uk-inline
                       label.uk-form-label Ngày đi
                       span.uk-form-icon(data-uk-icon='icon: calendar')
-                      input.uk-input.booking-arrival.uk-border-rounded(type='text', placeholder='m/dd/yyyy' name="depart_time" required)
+                      input.uk-input.booking-arrival.uk-border-rounded(type='text', placeholder='m/dd/yyyy' name="depart_time" autocomplete="off" required)
                   .uk-form-controls
                     .uk-inline
                       label.uk-form-label Ngày về
                       span.uk-form-icon(data-uk-icon='icon: calendar')
-                      input.uk-input.booking-departure.uk-border-rounded#arrival_time(type='text', placeholder='m/dd/yyyy' name="arrival_time" required)
+                      input.uk-input.booking-departure.uk-border-rounded#arrival_time(type='text', placeholder='m/dd/yyyy' name="arrival_time" autocomplete="off" required)
                   .uk-form-controls.uk-position-relative
                     label.uk-form-label(for='form-guest-select') Loại vé
                     span.uk-form-icon.select-icon(data-uk-icon='icon: users')

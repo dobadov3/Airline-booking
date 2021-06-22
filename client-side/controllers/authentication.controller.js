@@ -1,4 +1,5 @@
 const Customer = require('../models/customer.model');
+const passport = require("passport");
 const md5 = require('md5')
 
 module.exports.get = function (req, res) {
@@ -94,5 +95,24 @@ module.exports.postSignUp = async function(req, res){
 
 module.exports.logOut = function(req, res){
     res.clearCookie("userID");
-    res.redirect("/");
+    req.session.destroy((err) => {
+        if (err) {
+            return;
+        }
+
+        req.logout();
+    });
+    
+    res.redirect('/');
 }
+
+passport.serializeUser(async(user, done) => {
+    // console.log("user", user);
+
+    done(null, user);
+});
+
+passport.deserializeUser((obj, done) => {
+    
+    return done(null, obj);
+});

@@ -200,7 +200,6 @@ module.exports.getBookingOneWay = async function(req, res){
 }
 
 module.exports.postBookingOneWay = async function(req, res){
-    console.log(req.body)
     var item = [];
 
     
@@ -483,7 +482,6 @@ module.exports.getBookingRoundTrip = async function(req, res){
 }
 
 module.exports.postBookingRoundTrip = async function (req, res) {
-    console.log(req.body);
     var item = []
     req.body.total_price = parseFloat(req.body.total_price) + parseFloat(req.body.total_price_2);
     var bill = await Bill.create(
@@ -584,7 +582,6 @@ module.exports.postBookingRoundTrip = async function (req, res) {
             );
         }
     }
-    console.log(item, req.body.total_price);
     payPal(item, req, res)
 };
 

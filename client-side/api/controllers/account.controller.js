@@ -5,7 +5,7 @@ module.exports.get = async function (req, res) {
     var customer = await Customer.findById(req.signedCookies.userID);
     if (customer) {
         var totalOrderValue = 0;
-        var bills = await Bill.find({customer_id: customer._id})
+        var bills = await Bill.find({customer_id: customer._id, payment_status: "Đã thanh toán"})
 
         bills.forEach(item => {
             totalOrderValue += item.total_payment;

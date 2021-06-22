@@ -7,9 +7,28 @@ const cookieParser = require("cookie-parser");
 const router = require('./routes/index.route');
 const session = require("express-session");
 var paypal = require("paypal-rest-sdk");
+const passport = require('passport')
+const facebookStrategy  = require('passport-facebook').Strategy;
+const config = require('./config');
 
 require("dotenv").config();
 
+passport.use(
+  new facebookStrategy(
+      {
+          clientID: config.facebook_key,
+          clientSecret: config.facebook_secret,
+          callbackURL: config.callback_url,
+          profileFields: ["id", "displayName", "name", "gender", "email", "picture.tpye(large)", "birthday"],
+      },
+      function (token, refreshToken, profile, done) {
+        process.nextTick(function () {
+            // console.log(token, refreshToken, profile, done);
+            return done(null, profile);
+        });
+      }
+  )
+);
 
 app.set("trust proxy", 1); // trust first proxy
 app.use(
@@ -20,16 +39,18 @@ app.use(
     })
 );
 app.use(require("flash")());
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With"
-    );
+    res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
     res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
     next();
-});
+  });
+
+app.use(passport.initialize());
+app.use(passport.session());
 // app.use(flash(app));
+
+
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,

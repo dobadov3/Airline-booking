@@ -10,6 +10,7 @@ router.get("/change-password", authMiddleware.redirect, controller.getResetPass)
 router.post("/change-password", authMiddleware, controller.postChangePass);
 router.get("/history", authMiddleware.redirect, controller.getHistory);
 router.get("/history/detail/:billID", authMiddleware.redirect, controller.getDetail);
+router.get("/history/pay-back/:billID", authMiddleware.redirect, controller.payBack);
 
 router.post("/cancel-ticket/:ticketID", controller.cancelTicket);
 

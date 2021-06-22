@@ -1,4 +1,5 @@
 const Customer = require("../models/customer.model");
+const md5 = require('md5')
 const _ = require("lodash");
 
 module.exports.get = async function (req, res) {
@@ -47,3 +48,36 @@ module.exports.delete = async function (req, res) {
 
     res.redirect("back");
 };
+
+module.exports.getChangePass = async function(req, res){
+    var customer = await Customer.findById(req.params.customerID);
+
+    res.render("./customer/change-pass", {
+        customer,
+    });
+}
+
+module.exports.postChangePass = async function(req, res){
+    var customer = await Customer.findById(req.params.customerID);
+    const {newPass, confirmPass} = req.body;
+
+    if (newPass !== confirmPass){
+        res.render("./customer/change-pass", {
+            customer,
+            values: {
+                newPass,
+                confirmPass
+            },
+            error: "Mật khẩu xác nhận không đúng"
+        });
+        return;
+    }else{
+        customer.password = md5(newPass);
+        customer.save();
+
+        res.render("./customer/change-pass", {
+            customer,
+            success: "Cập nhật mật khẩu thành công"
+        });
+    }
+}

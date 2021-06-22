@@ -1,5 +1,6 @@
 const Account = require("../models/account.model");
 const Role = require("../models/role.model");
+const md5 = require('md5')
 const _ = require("lodash");
 
 module.exports.get = async function (req, res) {
@@ -51,3 +52,36 @@ module.exports.delete = async function (req, res) {
 
     res.redirect("back");
 };
+
+module.exports.getChangePass = async function(req, res){
+    var staff = await Account.findById(req.params.staffID);
+
+    res.render("./staff/change-pass", {
+        staff,
+    });
+}
+
+module.exports.postChangePass = async function(req, res){
+    var staff = await Account.findById(req.params.staffID);
+    const {newPass, confirmPass} = req.body;
+
+    if (newPass !== confirmPass){
+        res.render("./staff/change-pass", {
+            staff,
+            values: {
+                newPass,
+                confirmPass
+            },
+            error: "Mật khẩu xác nhận không đúng"
+        });
+        return;
+    }else{
+        staff.password = md5(newPass);
+        staff.save();
+
+        res.render("./staff/change-pass", {
+            staff,
+            success: "Cập nhật mật khẩu thành công"
+        });
+    }
+}

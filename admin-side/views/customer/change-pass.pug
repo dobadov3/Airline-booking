@@ -1,0 +1,21 @@
+extends ../layouts/layout
+block contents 
+    .col-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h4.card-title Thay đổi mật khẩu
+          form.forms-sample(method="POST", action=`/customers/change-pass/${customer._id}`)
+            .form-group
+              label(for='exampleInputName1') Mật khẩu mới
+              input#exampleInputName1.form-control(type='password', placeholder='Mật khẩu mới' name="newPass" value=values ? values.newPass : '')
+            .form-group
+              label(for='exampleInputName1') Nhập lại mật khẩu
+              input#exampleInputName1.form-control(type='password', placeholder='Nhập lại mật khẩu' name="confirmPass" value=values ? values.confirmPass : '')
+            if (error)
+                .form-group
+                    span.badge.badge-danger= error
+            if (success)
+                .form-group
+                    span.badge.badge-success= success
+            button(type="submit" class="btn btn-primary mr-2") Submit
+            button(class="btn btn-light") Cancel          

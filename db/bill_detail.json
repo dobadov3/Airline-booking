@@ -1,15 +1,29 @@
 [{
   "_id": {
-    "$oid": "60c9bd87d35d471c908918f1"
+    "$oid": "60d17bb81aa66d0e9c106091"
   },
-  "bill_id": "60c9bd87d35d471c908918f0",
-  "ticket_id": "60c5f33b0ac91911b8016933",
+  "bill_id": "60d17bb81aa66d0e9c106090",
+  "ticket_id": "60d055f5141d7b1cc82b9390",
   "__v": 0
 },{
   "_id": {
-    "$oid": "60c9bd87d35d471c908918f2"
+    "$oid": "60d19b0c04f23d3a643d038b"
   },
-  "bill_id": "60c9bd87d35d471c908918f0",
-  "ticket_id": "60c5f33b0ac91911b8016a02",
+  "bill_id": "60d19b0c04f23d3a643d038a",
+  "ticket_id": "60d055f5141d7b1cc82b938f",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d19b0c04f23d3a643d038c"
+  },
+  "bill_id": "60d19b0c04f23d3a643d038a",
+  "ticket_id": "60d055f5141d7b1cc82b939c",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d19b730ca27143100a61d7"
+  },
+  "bill_id": "60d19b730ca27143100a61d6",
+  "ticket_id": "60d055f5141d7b1cc82b949b",
   "__v": 0
 }]

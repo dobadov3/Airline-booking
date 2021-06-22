@@ -16,5 +16,26 @@
     "$date": "2000-11-04T00:00:00Z"
   },
   "gender": "Nam",
-  "job": "Sinh viên"
+  "job": "Sinh viên",
+  "type": "normal"
+},{
+  "_id": {
+    "$oid": "60d196b823976111181f2032"
+  },
+  "date_of_birth": {
+    "$date": "2000-11-03T17:00:00Z"
+  },
+  "gender": "Nam",
+  "cmnd": "",
+  "job": "",
+  "date_create": {
+    "$date": "2021-06-22T07:52:10.186Z"
+  },
+  "type": "facebook",
+  "username": "1683359505167862",
+  "name": "Duy Anh",
+  "email": "dobadov3@gmail.com",
+  "password": "d43a40c5509524382cdd07ad778cd07e",
+  "__v": 0,
+  "phone": ""
 }]

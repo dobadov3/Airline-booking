@@ -7,8 +7,10 @@ const authenticationMiddleware = require("../middlewares/authentication.middlewa
 router.get("/", authenticationMiddleware, controller.get);
 router.get("/delete/:customerID", authenticationMiddleware, controller.delete);
 router.get("/edit/:customerID", authenticationMiddleware, controller.getEdit);
+router.get("/change-pass/:customerID",authenticationMiddleware, controller.getChangePass);
 
 router.post("/create", authenticationMiddleware, controller.postCreate);
 router.post("/edit/:customerID", authenticationMiddleware, controller.postEdit);
+router.post("/change-pass/:customerID",authenticationMiddleware, controller.postChangePass);
 
 module.exports = router;

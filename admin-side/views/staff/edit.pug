@@ -26,7 +26,8 @@ block contents
             .form-group
               label(for='exampleInputName1') Giới tính
               input#exampleInputName1.form-control(type='text', placeholder='Tên sân bay' name="gender" value=staff.gender)
-            
+            .form-group
+              a(href=`/staffs/change-pass/${staff._id}`) Đổi mật khẩu 
             button(type="submit" class="btn btn-primary mr-2") Submit
             button(class="btn btn-light") Cancel          
 block script 

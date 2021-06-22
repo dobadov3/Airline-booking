@@ -16,6 +16,7 @@ block contents
                             th Mã hóa đơn
                             th Ngày tạo     
                             th Tổng cộng
+                            th Trạng thái thanh toán
                             th 
                     tbody#bill-body
                         //- each bill in bills
@@ -72,6 +73,13 @@ block script
                                 <td>${bill.code}</td>
                                 <td>${bill.date_create}</td>
                                 <td>${bill.total_payment.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
+                                ${(() => {
+                                    if (bill.payment_status === "Đã thanh toán"){
+                                       return `<td><span class="badge badge-success">${bill.payment_status}</span></td>`
+                                    }else{
+                                        return `<td><span class="badge badge-danger">${bill.payment_status}</span></td>`
+                                    }
+                                })()}
                                 <td>
                                     <a href="/bills/edit/${bill._id}">
                                         <button class="btn btn-inverse-primary btn-icon" type="button">

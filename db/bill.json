@@ -1,12 +1,37 @@
 [{
   "_id": {
-    "$oid": "60c9bd87d35d471c908918f0"
+    "$oid": "60d17bb81aa66d0e9c106090"
   },
-  "date": {
-    "$date": "2021-06-16T08:57:15.404Z"
-  },
+  "payment_status": "Đã thanh toán",
   "customer_id": "60c9bd0ed35d471c908918ef",
-  "total_payment": 2200000,
-  "code": "A46522",
+  "total_payment": 2000000,
+  "code": "74929B",
+  "date": {
+    "$date": "2021-06-22T05:57:12.581Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d19b0c04f23d3a643d038a"
+  },
+  "payment_status": "Chưa thanh toán",
+  "customer_id": "60d196b823976111181f2032",
+  "total_payment": 4000000,
+  "code": "189E5E",
+  "date": {
+    "$date": "2021-06-22T08:10:52.530Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d19b730ca27143100a61d6"
+  },
+  "payment_status": "Chưa thanh toán",
+  "customer_id": "60d196b823976111181f2032",
+  "total_payment": 3200000,
+  "code": "2BC4DB",
+  "date": {
+    "$date": "2021-06-22T08:12:35.443Z"
+  },
   "__v": 0
 }]

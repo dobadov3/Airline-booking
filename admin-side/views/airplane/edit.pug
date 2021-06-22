@@ -6,17 +6,17 @@ block contents
           h4.card-title= `Edit ${airplane.name}`
           form.forms-sample(method="POST", action=`/airplanes/edit/${airplane._id}`)
             .form-group
-              label.col-form-label(for='recipient-name') Tên sân bay:
+              label.col-form-label(for='recipient-name') Tên máy bay:
               input#recipient-name.form-control(type='text' name="name" value=airplane.name placeholder="Tên sân bay")
             .form-group
               label.col-form-label(for='economy_seatNum') Số chỗ ngồi phổ thông:
-              input#economy_seatNum.form-control(type='number' name="economy_seatNum" value=airplane.economy_seatNum placeholder="Số chỗ ngồi phổ thông")
+              input#economy_seatNum.form-control.w-25(type='number' name="economy_seatNum" value=airplane.economy_seatNum placeholder="Số chỗ ngồi phổ thông" disabled)
             .form-group
               label.col-form-label(for='economy_seatNum') Số chỗ ngồi phổ thông đặc biệt:
-              input#economy_seatNum.form-control(type='number' name="economy_seatNum" value=airplane.premium_economy_seatNum placeholder="Số chỗ ngồi phổ thông")
+              input#economy_seatNum.form-control.w-25(type='number' name="premium_economy_seatNum" value=airplane.premium_economy_seatNum placeholder="Số chỗ ngồi phổ thông" disabled)
             .form-group
               label.col-form-label(for='business_seatNum') Số chỗ ngồi thương gia:
-              input#business_seatNum.form-control(type='number' name="business_seatNum" value=airplane.business_seatNum placeholder="Số chỗ ngồi thương gia")
+              input#business_seatNum.form-control.w-25(type='number' name="business_seatNum" value=airplane.business_seatNum placeholder="Số chỗ ngồi thương gia" disabled)
             .form-group
               label.col-form-label(for='business_seatNum') Tên công ty máy bay:
               select.form-control(name="airplane_company_id")

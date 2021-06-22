@@ -26,6 +26,10 @@ var customerSchema = new mongoose.Schema({
         type: Date,
         default: new Date(),
     },
+    type: {
+        type: String,
+        default: "normal"
+    }
 });
 
 customerSchema.virtual('date').get( function() {

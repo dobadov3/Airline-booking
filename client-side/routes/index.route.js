@@ -27,19 +27,16 @@ const router = function(app) {
         res.render("./flight/success");
     });
     app.get("/fail", async (req, res) => {
-        var bill = await Bill.findOne().sort({ _id: -1 });
-        var bill_detail = await BillDetail.find({bill_id: bill._id})
+        res.render("./flight/fail");
+    });
+    app.get("/success/:billID", async (req, res) => {
+        var bill = await Bill.findById(req.params.billID);
 
-        for (let i = 0; i < bill_detail.length; i++) {
-            var ticket = await Ticket.findById(bill_detail[i].ticket_id);
-            ticket.status = "Vẫn còn";
-            ticket.save();
-
-            await BillDetail.findByIdAndDelete(bill_detail[i]._id);
-        }
-
-        await Bill.findByIdAndDelete(bill._id);
-        
+        bill.payment_status = "Đã thanh toán"
+        bill.save();
+        res.render("./flight/success");
+    });
+    app.get("/fail/:billID", async (req, res) => {    
         res.render("./flight/fail");
     });
     

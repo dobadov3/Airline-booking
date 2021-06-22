@@ -21,6 +21,7 @@ block content
                 th Ngày tạo
                 th Tên sản phẩm
                 th Tổng cộng
+                th Trạng thái thanh toán
                 th
             each bill in bills
                 tr 
@@ -34,6 +35,14 @@ block content
                             else
                                 span= `${bd.ticket_id.code}, `
                     td= bill.total_payment.toLocaleString('vi', {style : 'currency', currency : 'VND'})
+                    
+                    case bill.payment_status
+                        when "Đã thanh toán"
+                            td.text-success= bill.payment_status
+                        when "Chưa thanh toán"
+                            td.text-danger= bill.payment_status
                     td.text-end
+                        if (bill.payment_status === "Chưa thanh toán")
+                            a.btn.btn-danger.h-50.me-3(href="/profile/history/pay-back/"+bill._id) Thanh toán lại
                         a.btn.btn-primary.h-50(href="/profile/history/detail/"+bill._id) Xem chi tiết
                 

@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "60c1cb2b8b8f112a787d0064"
   },
-  "password": "250cf8b51c773f3f8dc8b4be867a9a02",
+  "password": "550a141f12de6341fba65b0ad0433500",
   "username": "baothy",
   "name": "Trình Hồng Bảo Thy",
   "email": "baothy2207@gmail.com",
@@ -17,7 +17,7 @@
   "_id": {
     "$oid": "60c9af353e2dae41bcf58e04"
   },
-  "password": "202cb962ac59075b964b07152d234b70",
+  "password": "f1c1592588411002af340cbaedd6fc33",
   "username": "dobadov3",
   "name": "Nguyễn Duy Anh",
   "email": "dobadov3@gmail.com",

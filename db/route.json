@@ -1,33 +1,161 @@
 [{
   "_id": {
-    "$oid": "60c5f33b0ac91911b801691e"
+    "$oid": "60d054abc9e3212ee4c10746"
   },
   "depart_airport_id": "60c0f553bbbab253a045c073",
   "arrival_airport_id": "60c0f5eabbbab253a045c082",
   "depart_time": {
-    "$date": "2021-06-11T00:00:00Z"
+    "$date": "2021-06-21T09:15:00Z"
   },
   "arrival_time": {
-    "$date": "2021-06-12T00:00:00Z"
+    "$date": "2021-06-21T09:50:00Z"
   },
   "price": 1000000,
-  "code": "82FB5B",
-  "__v": 0,
-  "status_id": "60c0cba0be52bd3818353855"
+  "code": "5DBD18",
+  "status_id": "60c9c69c3e2dae41bcf58e07",
+  "__v": 0
 },{
   "_id": {
-    "$oid": "60c5f39a8b1ba93390452779"
+    "$oid": "60d055f5141d7b1cc82b9384"
   },
   "depart_airport_id": "60c0f5eabbbab253a045c082",
-  "arrival_airport_id": "60c0f553bbbab253a045c073",
+  "arrival_airport_id": "60c0f5f3bbbab253a045c083",
   "depart_time": {
-    "$date": "2021-06-13T00:00:00Z"
+    "$date": "2021-06-25T01:30:00Z"
   },
   "arrival_time": {
-    "$date": "2021-06-14T00:00:00Z"
+    "$date": "2021-06-25T02:30:00Z"
   },
-  "price": 1300000,
-  "code": "BAA25E",
-  "__v": 0,
-  "status_id": "60c0cba0be52bd3818353855"
+  "price": 2000000,
+  "code": "36A00E",
+  "status_id": "60c0cba0be52bd3818353855",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d0576a141d7b1cc82b94b8"
+  },
+  "depart_airport_id": "60c0f5f3bbbab253a045c083",
+  "arrival_airport_id": "60c0f5eabbbab253a045c082",
+  "depart_time": {
+    "$date": "2021-06-30T09:00:00Z"
+  },
+  "arrival_time": {
+    "$date": "2021-06-30T10:00:00Z"
+  },
+  "price": 1500000,
+  "code": "6EB6AC",
+  "status_id": "60c0cba0be52bd3818353855",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d05cceeadb7b372408929a"
+  },
+  "depart_airport_id": "60c0f553bbbab253a045c073",
+  "arrival_airport_id": "60c0f590bbbab253a045c079",
+  "depart_time": {
+    "$date": "2021-06-21T09:32:00Z"
+  },
+  "arrival_time": {
+    "$date": "2021-06-21T09:35:00Z"
+  },
+  "price": 200000,
+  "code": "CA730F",
+  "status_id": "60c9c69c3e2dae41bcf58e07",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d05d93eadb7b3724089364"
+  },
+  "depart_airport_id": "60c0f566bbbab253a045c075",
+  "arrival_airport_id": "60c0f5c2bbbab253a045c07e",
+  "depart_time": {
+    "$date": "2021-07-15T09:30:00Z"
+  },
+  "arrival_time": {
+    "$date": "2021-07-15T10:30:00Z"
+  },
+  "price": 1000000,
+  "code": "F5CC02",
+  "status_id": "60c0cba0be52bd3818353855",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d05dd2eadb7b372408941e"
+  },
+  "depart_airport_id": "60c0f553bbbab253a045c073",
+  "arrival_airport_id": "60c0f5b9bbbab253a045c07d",
+  "depart_time": {
+    "$date": "2021-07-21T17:00:00Z"
+  },
+  "arrival_time": {
+    "$date": "2021-07-21T18:30:00Z"
+  },
+  "price": 300000,
+  "code": "2AE33B",
+  "status_id": "60c0cba0be52bd3818353855",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d19de0871a53429c6e0b61"
+  },
+  "depart_airport_id": "60c0f566bbbab253a045c075",
+  "arrival_airport_id": "60c0f57abbbab253a045c077",
+  "depart_time": {
+    "$date": "2021-06-23T10:30:00Z"
+  },
+  "arrival_time": {
+    "$date": "2021-06-23T11:30:00Z"
+  },
+  "price": 100000,
+  "code": "298B7A",
+  "status_id": "60c0cba0be52bd3818353855",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d19e00871a53429c6e0c75"
+  },
+  "depart_airport_id": "60c0f59bbbbab253a045c07a",
+  "arrival_airport_id": "60c0f5eabbbab253a045c082",
+  "depart_time": {
+    "$date": "2021-06-25T08:30:00Z"
+  },
+  "arrival_time": {
+    "$date": "2021-06-25T09:30:00Z"
+  },
+  "price": 200000,
+  "code": "461AC3",
+  "status_id": "60c0cba0be52bd3818353855",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d19e40871a53429c6e0d84"
+  },
+  "depart_airport_id": "60c0f55dbbbab253a045c074",
+  "arrival_airport_id": "60c0f5d7bbbab253a045c080",
+  "depart_time": {
+    "$date": "2021-06-22T08:50:00Z"
+  },
+  "arrival_time": {
+    "$date": "2021-06-22T09:50:00Z"
+  },
+  "price": 300000,
+  "code": "73A682",
+  "status_id": "60c9c6893e2dae41bcf58e05",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60d19e71871a53429c6e0e4e"
+  },
+  "depart_airport_id": "60c0f5c2bbbab253a045c07e",
+  "arrival_airport_id": "60c0f55dbbbab253a045c074",
+  "depart_time": {
+    "$date": "2021-06-22T08:24:00Z"
+  },
+  "arrival_time": {
+    "$date": "2021-06-22T09:30:00Z"
+  },
+  "price": 500000,
+  "code": "E23122",
+  "status_id": "60c9c68f3e2dae41bcf58e06",
+  "__v": 0
 }]

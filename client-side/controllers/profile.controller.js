@@ -6,6 +6,7 @@ const Cancel = require('../models/cancel.model');
 const Status = require("../models/status.model");
 const md5 = require('md5')
 const _ = require("lodash");
+var paypal = require("paypal-rest-sdk");
 
 module.exports.get = async function(req, res){
     var currentAccount = await Customer.findById(req.signedCookies.userID)
@@ -71,8 +72,6 @@ module.exports.getDetail = async function(req, res){
 
         tickets.push(ticket);
     }
-
-    console.log(tickets)
 
     res.render("./profile/detail-history", {
         bill_detail,
@@ -146,4 +145,67 @@ module.exports.cancelTicket = async function (req, res) {
     bill.save();
 
     res.redirect('back')
+}
+
+module.exports.payBack = async function(req, res){
+    var bill = await Bill.findById(req.params.billID)
+    var bill_detail = await BillDetail.find({bill_id: req.params.billID}).populate('ticket_id')
+    var item = []
+    var total = 0;
+
+    for (let i = 0; i < bill_detail.length; i++) {
+        var ticket = bill_detail[i].ticket_id;
+        var obj = {
+            name: "Vé máy bay",
+            sku: ticket.code,
+            price: parseFloat((ticket.price * 0.000043).toFixed(2)),
+            currency: "USD",
+            quantity: 1,
+        };
+        total += ticket.price
+        item.push(obj);
+        
+    }
+
+    total= parseFloat((total * 0.000043).toFixed(2)) 
+
+    payPal(item, res, total, req.params.billID)
+    
+}
+
+var payPal = (item, res, total, bill_id) => {
+    var create_payment_json = {
+        intent: "sale",
+        payer: {
+            payment_method: "paypal",
+        },
+        redirect_urls: {
+            return_url: `http://localhost:3000/success/${bill_id}`,
+            cancel_url: `http://localhost:3000/fail/${bill_id}`,
+        },
+        transactions: [
+            {
+                item_list: {
+                    items: item,
+                },
+                amount: {
+                    currency: "USD",
+                    total: total,
+                },
+                description: "This is the payment description.",
+            },
+        ],
+    };
+
+    paypal.payment.create(create_payment_json, function (error, payment) {
+        if (error) {
+            throw error;
+        } else {
+            for (let i = 0; i < payment.links.length; i++) {
+                if (payment.links[i].rel === "approval_url") {
+                    res.redirect(payment.links[i].href);
+                }
+            }
+        }
+    });
 }
